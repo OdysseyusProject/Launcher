@@ -36,7 +36,7 @@ dependencies {
     implementation 'de.jensd:fontawesomefx-fontawesome:4.7.0-9.1.2'
 
     implementation 'fr.flowarg:flowupdater:1.5.1'
-    implementation 'fr.flowarg:openlauncherlib:3.2.2'
+    implementation 'fr.flowarg:openlauncherlib:3.2.3'
     implementation 'com.azuriom:azauth:1.0-SNAPSHOT'
 
 
