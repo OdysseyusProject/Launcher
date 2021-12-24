@@ -3,19 +3,18 @@
 
 
 Le launcher pour jouer à **odysseyus** est disponible ici :
-- https://odysseyus.fr/launcher
-
-- https://odysseyus.fr/faq
-
-- https://odysseyus.fr/discord
-
-
+- [https://odysseyus.fr/launcher](https://odysseyus.fr/launcher)
 
 
 **Besoin d'un tuto ?**
 
 Je crois que nous avons ça en stock^^
 - [https://odysseyus.fr/tutos/launcher](https://odysseyus.fr/tutos/launcher)
+- [FAQ](https://odysseyus.fr/faq)
+
+Un petit problème ? Rejoins-nous sur Discord :
+- [Discord](https://odysseyus.fr/discord)
+
 
 
 
