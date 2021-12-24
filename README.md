@@ -5,6 +5,11 @@
 Le launcher pour jouer à **odysseyus** est disponible ici :
 - https://odysseyus.fr/launcher
 
+- https://odysseyus.fr/faq
+
+- https://odysseyus.fr/discord
+
+
 
 
 **Besoin d'un tuto ?**
