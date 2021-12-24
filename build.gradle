@@ -1,0 +1,65 @@
+plugins {
+    id 'idea'
+    id 'com.github.johnrengelman.shadow' version '7.0.0'
+    id 'java-library'
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.0.9'
+
+}
+
+
+group 'com.github.EthanCosta'
+version '2.3.0'
+
+repositories {
+    mavenCentral()
+
+    maven {
+        url = 'https://jitpack.io/'
+        name = 'JitPack'
+    }
+
+    maven {
+        url 'https://litarvan.github.io/maven'
+    }
+
+    maven {
+        url 'https://oss.sonatype.org/content/repositories/snapshots/'
+    }
+}
+
+dependencies {
+
+
+    implementation 'fr.litarvan:openauth:1.1.1'
+
+    implementation 'de.jensd:fontawesomefx-fontawesome:4.7.0-9.1.2'
+
+    implementation 'fr.flowarg:flowupdater:1.5.0'
+    implementation 'fr.flowarg:openlauncherlib:3.2.2'
+    implementation 'com.azuriom:azauth:1.0-SNAPSHOT'
+
+
+
+    implementation 'com.github.goxr3plus:FX-BorderlessScene:4.+'
+    implementation 'com.github.oshi:oshi-core:5.8.3'
+
+
+
+
+}
+
+javafx {
+    version = 12
+    modules = ['javafx.controls', 'javafx.fxml', 'javafx.web', 'javafx.swing']
+}
+
+application {
+    getMainClass().set('com.github.EthanCosta.odysseyus.main')
+}
+
+compileJava {
+    options.encoding = "UTF-8"
+}
+
+jar { manifest.attributes.put('Main_Class', 'com.github.EthanCosta.odysseyus.main') }
