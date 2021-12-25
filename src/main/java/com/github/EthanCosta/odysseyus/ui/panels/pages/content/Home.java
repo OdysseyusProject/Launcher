@@ -181,7 +181,6 @@ public class Home extends contentpanel {
             modInfos.add(new CurseFileInfo(377448, 3549966)); //Space Bosstools
             modInfos.add(new CurseFileInfo(546554, 3550030)); //Space Bosstools Addons
             //modInfos.add(new CurseFileInfo(284324, 3543338)); //Emojiful ( A rajouter sur Odysseyus)
-            //Ethan Le bg
             modInfos.add(new CurseFileInfo(492574, 3449703)); //My server is Compatible
 
 
