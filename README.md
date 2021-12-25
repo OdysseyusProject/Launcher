@@ -23,5 +23,7 @@ Un petit problème ? Rejoins-nous sur Discord :
 - A [FlowArgs](https://github.com/FlowArg) pour son aide (surtout avec [FlowUpdater](https://github.com/FlowArg/FlowUpdater))
 - A toute l'équipe du [Suppor Launcher](https://discord.gg/zjNxFkcxNK)
 
+Retrouver nos autres repo sur notre compte github 
+
 
 
