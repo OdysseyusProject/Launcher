@@ -176,16 +176,34 @@ public class Home extends contentpanel {
             modInfos.add(new CurseFileInfo(289380, 3336021)); //Obfuscate
             modInfos.add(new CurseFileInfo(289479, 3553336)); //cgm
             modInfos.add(new CurseFileInfo(286660, 3103940)); //vehicle Mod
-            modInfos.add(new CurseFileInfo(238222, 3438494)); //JEI
-            modInfos.add(new CurseFileInfo(520208, 3492947)); //Odysseyus
-            modInfos.add(new CurseFileInfo(377448, 3549966)); //Space Bosstools
-            modInfos.add(new CurseFileInfo(546554, 3550030)); //Space Bosstools Addons
-            //modInfos.add(new CurseFileInfo(284324, 3543338)); //Emojiful ( A rajouter sur Odysseyus)
-            modInfos.add(new CurseFileInfo(492574, 3449703)); //My server is Compatible
+            modInfos.add(new CurseFileInfo(238222, 3590083)); //JEI
+            modInfos.add(new CurseFileInfo(520208, 3591034)); //Odysseyus
+            modInfos.add(new CurseFileInfo(377448, 3581611)); //Beyond Earth
+            modInfos.add(new CurseFileInfo(546554, 3581789)); //Space Bosstools Addons
+            modInfos.add(new CurseFileInfo(284324, 3543338)); //Emojiful ( A rajouter sur Odysseyus)
+            modInfos.add(new CurseFileInfo(289310, 3381163)); //Camera
+            //modInfos.add(new CurseFileInfo(285612, 3211323)); //RandomPatches
+            modInfos.add(new CurseFileInfo(470193, 3434629)); //Connectivity
+
+
+            modInfos.add(new CurseFileInfo(470193, 3434629)); //My server is Compatible
+
+            final  List<CurseFileInfo> mekanism = new ArrayList<>();
+            mekanism.add(new CurseFileInfo(345425, 3590103)); //addition
+            mekanism.add(new CurseFileInfo(268567, 3590102)); //tools
+            mekanism.add(new CurseFileInfo(268566, 3590101)); //generator
+
+
+
+
+
+
 
 
 
             modInfos.addAll(addons.modAddons);
+            modInfos.addAll(mekanism);
+
             final List<Mod> files = Mod.getModsFromJson(MinecraftInfos.MODS_LIST_URL);
 
             ExternalFile.getExternalFilesFromJson("https://odysseyus.fr/external.json");
