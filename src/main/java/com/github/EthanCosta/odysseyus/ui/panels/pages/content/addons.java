@@ -40,6 +40,7 @@ public class addons extends contentpanel {
     CheckBox better_animation2 = new CheckBox("Better Animations Collection");
     CheckBox Controllable = new CheckBox("Controllable");
     Button tutosbtn = new Button("Infos Addons");
+    CheckBox better_animal_model = new CheckBox("Better Animal Models");
 
 
     public final Saver saver = new Saver(Path.of(launcherDir.toString(), "addons.properties"));
@@ -99,6 +100,7 @@ public class addons extends contentpanel {
         dynamic_surroundings.setIndeterminate(false);
         dynamic_surroundings.setTranslateY(60d);
         setCanTakeAllSize(dynamic_surroundings);
+        dynamic_surroundings.setFont(Font.font("Verdana", FontPosture.REGULAR, 13f));
         dynamic_surroundings.selectedProperty().addListener((e, old, newValue) -> {
             if (newValue) {
 
@@ -129,6 +131,7 @@ public class addons extends contentpanel {
         boobs_mod.setTranslateX(10d);
         boobs_mod.setTranslateY(85d);
         setCanTakeAllSize(boobs_mod);
+        boobs_mod.setFont(Font.font("Verdana", FontPosture.REGULAR, 13f));
         boobs_mod.selectedProperty().addListener((e, old, newValue) -> {
             if (newValue) {
 
@@ -158,6 +161,7 @@ public class addons extends contentpanel {
         setTop(inventory_hud_plus);
         inventory_hud_plus.setTranslateX(10d);
         inventory_hud_plus.setTranslateY(110d);
+        inventory_hud_plus.setFont(Font.font("Verdana", FontPosture.REGULAR, 13f));
         setCanTakeAllSize(inventory_hud_plus);
         inventory_hud_plus.selectedProperty().addListener((e, old, newValue) -> {
             if (newValue) {
@@ -183,12 +187,13 @@ public class addons extends contentpanel {
 
         //item_physics
 
-        item_physics.getStyleClass().add("addons-mods");
+        item_physics.getStyleClass().add("addons-mods"); //25
         setLeft(item_physics);
         setTop(item_physics);
         item_physics.setTranslateX(10d);
         item_physics.setTranslateY(135d);
         setCanTakeAllSize(item_physics);
+        item_physics.setFont(Font.font("Verdana", FontPosture.REGULAR, 13f));
         item_physics.selectedProperty().addListener((e, old, newValue) -> {
             if (newValue) {
 
@@ -221,6 +226,7 @@ public class addons extends contentpanel {
         setTop(better_animation2);
         better_animation2.setTranslateX(10d);
         better_animation2.setTranslateY(160d);
+        better_animation2.setFont(Font.font("Verdana", FontPosture.REGULAR, 13f));
         setCanTakeAllSize(better_animation2);
         better_animation2.selectedProperty().addListener((e, old, newValue) -> {
             if (newValue) {
@@ -254,6 +260,7 @@ public class addons extends contentpanel {
         Controllable.setTranslateX(10d);
         Controllable.setTranslateY(185d);
         setCanTakeAllSize(Controllable);
+        Controllable.setFont(Font.font("Verdana", FontPosture.REGULAR, 13f));
         Controllable.selectedProperty().addListener((e, old, newValue) -> {
             if (newValue) {
 
@@ -276,30 +283,58 @@ public class addons extends contentpanel {
         Controllable.setSelected(Boolean.valueOf(saver.get("Controllable", "false")));
 
 
+        better_animal_model.getStyleClass().add("addons-mods");
+        setLeft(better_animal_model);
+        setTop(better_animal_model);
+        better_animal_model.setTranslateX(10d);
+        better_animal_model.setTranslateY(210d);
+        setCanTakeAllSize(better_animal_model);
+        better_animal_model.setFont(Font.font("Verdana", FontPosture.REGULAR, 13f));
+
+        better_animal_model.selectedProperty().addListener((e, old, newValue) -> {
+            if (newValue) {
+
+                modAddons.add(new CurseFileInfo(287443, 3231449)); //Better Animal Models
+
+
+                System.out.println("Better animal models ajouté");
+                saver.set("BetterAnimalModels", "true");
+
+            } else {
+                modAddons.remove(new CurseFileInfo(287443, 3231449)); //Better Animal Models
+                System.out.println("Controllable supprimé de la liste");
+                saver.remove("BetterAnimalModels");
+
+
+            }
+
+        });
+        contentPane.getChildren().add(better_animal_model);
+        better_animal_model.setSelected(Boolean.valueOf(saver.get("BetterAnimalModels", "false")));
 
 
 
         //Explications
         Label titleInfos = new Label("Informations");
-        titleInfos.setFont(Font.font("Consolas", FontWeight.BOLD, FontPosture.REGULAR, 20f));
+        titleInfos.setFont(Font.font("Consolas", FontWeight.BOLD, FontPosture.REGULAR, 22));
         titleInfos.getStyleClass().add("addons-title");
         setLeft(titleInfos);
         setCanTakeAllSize(titleInfos);
         setTop(titleInfos);
         titleInfos.setTextAlignment(TextAlignment.LEFT);
-        titleInfos.setTranslateY(225d);
+        titleInfos.setTranslateY(250d);
         titleInfos.setTranslateX(10d);
         contentPane.getChildren().add(titleInfos);
 
         //Explications
         Label infosLabel = new Label("Ces mods ne sont pas nécessaires au fonctionnement d'Odysseyus et servent à améliorer\nvotre expérience de jeu.\nPour toutes informations : https://odysseyus.fr/addons");
-        infosLabel.setFont(Font.font("Verdana", FontPosture.REGULAR, 12f));
+        infosLabel.setFont(Font.font("Verdana", FontPosture.REGULAR, 14f));
         infosLabel.getStyleClass().add("addons-title");
         setLeft(infosLabel);
         setCanTakeAllSize(infosLabel);
         setTop(infosLabel);
         infosLabel.setTextAlignment(TextAlignment.LEFT);
-        infosLabel.setTranslateY(250d);
+        infosLabel.setTranslateY(275d);
         infosLabel.setTranslateX(10d);
         contentPane.getChildren().add(infosLabel);
 
@@ -315,7 +350,7 @@ public class addons extends contentpanel {
 
         tutosbtn.setMaxWidth(150);
         tutosbtn.setTranslateX(10d);
-        tutosbtn.setTranslateY(305d);
+        tutosbtn.setTranslateY(330d);
 //50
         tutosbtn.setOnMouseClicked(e -> {
             try {
