@@ -184,9 +184,7 @@ public class Home extends contentpanel {
             modInfos.add(new CurseFileInfo(289310, 3381163)); //Camera
             //modInfos.add(new CurseFileInfo(285612, 3211323)); //RandomPatches
             modInfos.add(new CurseFileInfo(470193, 3434629)); //Connectivity
-
-
-            modInfos.add(new CurseFileInfo(470193, 3434629)); //My server is Compatible
+            modInfos.add(new CurseFileInfo(492574, 3449703)); //My server is Compatible
 
             final  List<CurseFileInfo> mekanism = new ArrayList<>();
             mekanism.add(new CurseFileInfo(345425, 3590103)); //addition
