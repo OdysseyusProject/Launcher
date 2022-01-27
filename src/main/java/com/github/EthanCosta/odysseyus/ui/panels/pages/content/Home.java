@@ -186,6 +186,8 @@ public class Home extends contentpanel {
             modInfos.add(new CurseFileInfo(470193, 3434629)); //Connectivity
             modInfos.add(new CurseFileInfo(492574, 3449703)); //My server is Compatible
             modInfos.add(new CurseFileInfo(497637, 3406131)); //XK's
+            modInfos.add(new CurseFileInfo(388800, 3604756)); //Polymorph
+
 
 
             final  List<CurseFileInfo> mekanism = new ArrayList<>();
