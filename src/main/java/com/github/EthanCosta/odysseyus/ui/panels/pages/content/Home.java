@@ -69,7 +69,7 @@ public class Home extends contentpanel {
         RowConstraints rowConstraints = new RowConstraints();
         rowConstraints.setValignment(VPos.CENTER);
         rowConstraints.setMinHeight(75);
-        rowConstraints.setMaxHeight(75);
+        rowConstraints.setMaxHeight(85);
         this.layout.getRowConstraints().addAll(rowConstraints, new RowConstraints());
         boxPane.getStyleClass().add("box-pane");
         setCanTakeAllSize(boxPane);
@@ -104,6 +104,7 @@ public class Home extends contentpanel {
         setCanTakeAllSize(playBtn);
         setCenterH(playBtn);
         setCenterV(playBtn);
+        playBtn.setMaxWidth(150);
         playBtn.getStyleClass().add("play-btn");
         playBtn.setGraphic(playIcon);
         playBtn.setOnMouseClicked(e -> this.play());
@@ -135,7 +136,8 @@ public class Home extends contentpanel {
                 });
             }
 
-            @Override
+
+            //@Override TRUC DE MERDE QUI FAIT TOUS BUG
             public void update(long downloaded, long max) {
                 Platform.runLater(() -> {
                     percentTxt = decimalFormat.format(downloaded * 100.d / max) + "%";

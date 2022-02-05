@@ -1,5 +1,6 @@
 package com.github.EthanCosta.odysseyus;
 
+import com.azuriom.azauth.AzAuthenticator;
 import com.github.EthanCosta.odysseyus.ui.PanelManager;
 import com.github.EthanCosta.odysseyus.ui.panels.pages.App;
 import com.github.EthanCosta.odysseyus.ui.panels.pages.login;
@@ -19,6 +20,7 @@ import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.nio.file.Path;
 import java.util.UUID;
 
@@ -63,49 +65,31 @@ private PanelManager panelManager;
     }
 
     public boolean isUserAlreadyLoggedIn() {
-        if (saver.get("accessToken") != null && saver.get("clientToken") != null) {
-            Authenticator authenticator = new Authenticator(Authenticator.MOJANG_AUTH_URL, AuthPoints.NORMAL_AUTH_POINTS);
+        if (saver.get("accessToken") != null ) {
+
+            AzAuthenticator authenticator = new AzAuthenticator("https://odysseyus.fr");
+
+
 
             try {
-                RefreshResponse response = authenticator.refresh(saver.get("accessToken"), saver.get("clientToken"));
-                saver.set("accessToken", response.getAccessToken());
-                saver.set("clientToken", response.getClientToken());
-                saver.save();
+
+                AuthInfos response = authenticator.verify(saver.get("accessToken"), AuthInfos.class);
+
                 this.setAuthInfos(new AuthInfos(
-                        response.getSelectedProfile().getName(),
+                        response.getUsername(),
                         response.getAccessToken(),
-                        response.getClientToken(),
-                        response.getSelectedProfile().getId()
+                        response.getUuid()
+
                 ));
 
+
+
                 return true;
-            } catch (AuthenticationException ignored) {
+            } catch (IOException | com.azuriom.azauth.AuthenticationException ignored) {
                 saver.remove("accessToken");
                 saver.remove("clientToken");
                 saver.save();
             }
-        } else if (saver.get("msAccessToken") != null && saver.get("msRefreshToken") != null) {
-            try {
-                MicrosoftAuthenticator authenticator = new MicrosoftAuthenticator();
-                MicrosoftAuthResult response = authenticator.loginWithRefreshToken(saver.get("msRefreshToken"));
-
-                saver.set("msAccessToken", response.getAccessToken());
-                saver.set("msRefreshToken", response.getRefreshToken());
-                saver.save();
-                this.setAuthInfos(new AuthInfos(
-                        response.getProfile().getName(),
-                        response.getAccessToken(),
-                        response.getProfile().getId()
-                ));
-                return true;
-            } catch (MicrosoftAuthenticationException e) {
-                saver.remove("msAccessToken");
-                saver.remove("msRefreshToken");
-                saver.save();
-            }
-        } else if (saver.get("offline-username") != null) {
-            this.authInfos = new AuthInfos(saver.get("offline-username"), UUID.randomUUID().toString(), UUID.randomUUID().toString());
-            return true;
         }
 
         return false;

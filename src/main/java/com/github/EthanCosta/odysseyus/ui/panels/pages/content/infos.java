@@ -1,4 +1,4 @@
-/*
+
 package com.github.EthanCosta.odysseyus.ui.panels.pages.content;
 
 
@@ -56,7 +56,7 @@ public class infos extends contentpanel {
         saver.load();
 
         try {
-            MinecraftServerPingInfos data = new MinecraftServerPing().getPing(new MinecraftServerPingOptions().setHostname("play.hypixel.net").setPort(25565));
+            MinecraftServerPingInfos data = new MinecraftServerPing().getPing(new MinecraftServerPingOptions().setHostname("play.odysseyus.fr").setPort(25565));
             AzAuthenticator authenticator = new AzAuthenticator("https://odysseyus.fr");
 
             AuthInfos response = authenticator.verify(saver.get("accessToken"), AuthInfos.class);
@@ -125,4 +125,3 @@ public class infos extends contentpanel {
 
 
 }
-*/

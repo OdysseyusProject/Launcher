@@ -3,10 +3,7 @@ package com.github.EthanCosta.odysseyus.ui.panels.pages;
 import com.github.EthanCosta.odysseyus.Launcher;
 import com.github.EthanCosta.odysseyus.ui.panel.Panel;
 import com.github.EthanCosta.odysseyus.ui.PanelManager;
-import com.github.EthanCosta.odysseyus.ui.panels.pages.content.Home;
-import com.github.EthanCosta.odysseyus.ui.panels.pages.content.contentpanel;
-import com.github.EthanCosta.odysseyus.ui.panels.pages.content.settings;
-import com.github.EthanCosta.odysseyus.ui.panels.pages.content.addons;
+import com.github.EthanCosta.odysseyus.ui.panels.pages.content.*;
 
 
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
@@ -33,7 +30,7 @@ public class App extends Panel {
     Node activeLink = null;
     contentpanel currentPage = null;
 
-    Button homeBtn, settingsBtn, addonsBTN;
+    Button homeBtn, settingsBtn, addonsBTN, infosBTN;
 
     Saver saver = Launcher.getInstance().getSaver();
 
@@ -120,6 +117,14 @@ public class App extends Panel {
         addonsBTN.setTranslateY(170d);
         addonsBTN.setOnMouseClicked(e -> setPage(new addons(), addonsBTN));
 
+        infosBTN = new Button("Infos");
+        infosBTN.getStyleClass().add("sidemenu-nav-btn");
+        infosBTN.setGraphic(new FontAwesomeIconView(FontAwesomeIcon.INFO_CIRCLE));
+        setTop(infosBTN);
+        infosBTN.setTranslateY(210d);
+        infosBTN.setOnMouseClicked(e -> setPage(new infos(), infosBTN));
+
+        //sidemenu.getChildren().add(infosBTN);
 
 
         sidemenu.getChildren().addAll(homeBtn, settingsBtn, addonsBTN);
@@ -135,7 +140,7 @@ public class App extends Panel {
         String avatarUrl = "https://minotar.net/helm/" + (
                 saver.get("offline-username") != null ?
                         Launcher.getInstance().getAuthInfos().getUsername() + ".png"    :
-                        Launcher.getInstance().getAuthInfos().getUuid() + ".png"
+                        Launcher.getInstance().getAuthInfos().getUsername() + ".png"
         );
         ImageView avatarView = new ImageView();
         Image avatarImg = new Image(avatarUrl);

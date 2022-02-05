@@ -1,16 +1,14 @@
 package com.github.EthanCosta.odysseyus.ui.panels.pages;
 
+import com.azuriom.azauth.AuthenticationException;
+import com.azuriom.azauth.AzAuthenticator;
+
 import com.github.EthanCosta.odysseyus.Launcher;
 import com.github.EthanCosta.odysseyus.ui.PanelManager;
 import com.github.EthanCosta.odysseyus.ui.panel.Panel;
-import fr.litarvan.openauth.AuthPoints;
-import fr.litarvan.openauth.AuthenticationException;
-import fr.litarvan.openauth.microsoft.MicrosoftAuthenticator;
-import fr.litarvan.openauth.Authenticator;
-import fr.litarvan.openauth.model.AuthAgent;
-import fr.litarvan.openauth.model.response.AuthResponse;
-import fr.theshark34.openlauncherlib.util.Saver;
+
 import fr.theshark34.openlauncherlib.minecraft.AuthInfos;
+import fr.theshark34.openlauncherlib.util.Saver;
 
 import javafx.geometry.HPos;
 import javafx.scene.control.*;
@@ -26,7 +24,10 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.TextAlignment;
 
-import java.util.UUID;
+import java.awt.*;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class login extends Panel {
@@ -40,8 +41,7 @@ public class login extends Panel {
     Label userErrorLabel = new Label();
     Label passwordErrorLabel = new Label();
     Button btnLogin = new Button("Connexion");
-    CheckBox authModeChk = new CheckBox("Mode crack");
-    Button msLoginBtn = new Button();
+   // CheckBox authModeChk = new CheckBox("Mode crack");
 
 
 
@@ -86,7 +86,7 @@ public class login extends Panel {
          * Login sidebar
          */
         Label title = new Label("Odysseyus Launcher");
-        title.setFont(Font.font("Consolas", FontWeight.BOLD, FontPosture.REGULAR, 30f));
+        title.setFont(Font.font("ARIAL", FontWeight.BOLD, FontPosture.REGULAR, 30f));
         title.getStyleClass().add("login-title");
         setCenterH(title);
         setCanTakeAllSize(title);
@@ -100,7 +100,7 @@ public class login extends Panel {
         setCanTakeAllSize(userField);
         setCenterV(userField);
         setCenterH(userField);
-        userField.setPromptText("Adresse E-Mail");
+        userField.setPromptText("Adresse E-Mail d'Odysseyus.fr");
         userField.setMaxWidth(300);
         userField.setTranslateY(-70d);
         userField.getStyleClass().add("login-input");
@@ -136,6 +136,7 @@ public class login extends Panel {
         passwordErrorLabel.setMaxWidth(280);
         passwordErrorLabel.setTextAlignment(TextAlignment.LEFT);
 
+
         // Login button
         setCanTakeAllSize(btnLogin);
         setCenterV(btnLogin);
@@ -145,30 +146,62 @@ public class login extends Panel {
         btnLogin.setTranslateY(40d);
         btnLogin.getStyleClass().add("login-log-btn");
         btnLogin.setOnMouseClicked(e -> {
-            this.authenticate(userField.getText(), passwordField.getText());
-        });
-
-        setCanTakeAllSize(authModeChk);
-        setCenterV(authModeChk);
-        setCenterH(authModeChk);
-        authModeChk.getStyleClass().add("login-mode-chk");
-        authModeChk.setMaxWidth(300);
-        authModeChk.setTranslateY(85d);
-        authModeChk.selectedProperty().addListener((e, old, newValue) -> {
-            offlineAuth.set(newValue);
-            passwordField.setDisable(newValue);
-            if (newValue) {
-                userField.setPromptText("Pseudo");
-                passwordField.clear();
-            } else {
-                userField.setPromptText("Adresse mail");
+            try {
+                this.authenticate(userField.getText(), passwordField.getText());
+            } catch (AuthenticationException ex) {
+                ex.printStackTrace();
             }
+        });
 
-            btnLogin.setDisable(!(userField.getText().length() > 0 && (offlineAuth.get() || passwordField.getText().length() > 0)));
+        ImageView imageView = new ImageView();
+        imageView.setImage(new Image("images/ody-logo.jpg"));
+        imageView.setPreserveRatio(true);
+        imageView.getStyleClass().add("ms-login-btn");
+        imageView.setFitHeight(165);
+        setLeft(imageView);
+        setTop(imageView);
+        imageView.setTranslateY(81);
+        imageView.setTranslateX(90);
+        imageView.setOnMouseClicked(e -> {
+            try {
+                Desktop.getDesktop().browse(new URI("https://odysseyus.fr/"));
+            }   catch (IOException | URISyntaxException ex) {
 
+            ex.printStackTrace();
+        }
+    });
+
+        //Explications
+        Label inscritText1 = new Label("Pas encore inscrit ?");
+        inscritText1.setFont(Font.font("Verdana", FontPosture.REGULAR, 12f));
+        inscritText1.getStyleClass().add("info-inscription");
+        setLeft(inscritText1);
+        setCanTakeAllSize(inscritText1);
+        setTop(inscritText1);
+        inscritText1.setTextAlignment(TextAlignment.LEFT);
+        inscritText1.setTranslateY(410);
+        inscritText1.setTranslateX(27d);
+
+        Label inscritText2 = new Label("Clique ici!");
+        inscritText2.setFont(Font.font("Verdana", FontPosture.REGULAR, 12f));
+        inscritText2.getStyleClass().add("info-inscription2");
+        setLeft(inscritText2);
+        setCanTakeAllSize(inscritText2);
+        setTop(inscritText2);
+        inscritText2.setTextAlignment(TextAlignment.LEFT);
+        inscritText2.setTranslateY(410);
+        inscritText2.setTranslateX(146d);
+        inscritText2.setOnMouseClicked(e -> {
+            try {
+                Desktop.getDesktop().browse(new URI("https://odysseyus.fr/user/register"));
+            } catch (IOException | URISyntaxException ex) {
+                ex.printStackTrace();
+            }
         });
 
 
+
+/*
         Separator separator = new Separator();
         setCanTakeAllSize(separator);
         setCenterH(separator);
@@ -190,8 +223,7 @@ public class login extends Panel {
 
 
 
-        // Microsoft login button
-        ImageView view = new ImageView(new Image("images/microsoft.png"));
+     ImageView view = new ImageView(new Image("images/microsoft.png"));
         view.setPreserveRatio(true);
         view.setFitHeight(30d);
         setCanTakeAllSize(msLoginBtn);
@@ -205,12 +237,11 @@ public class login extends Panel {
                 this.authenticateMS());
 
 
-        loginCard.getChildren().addAll(userField, userErrorLabel, passwordField, passwordErrorLabel, btnLogin, separator, loginWithLabel, msLoginBtn, authModeChk);
+ */
+        loginCard.getChildren().addAll(userField, userErrorLabel, passwordField, passwordErrorLabel, btnLogin, inscritText1, inscritText2, imageView);
     }
 
     public void updateLoginBtnState(TextField textField, Label errorLabel) {
-        if (offlineAuth.get() && textField == passwordField) return;
-
         if (textField.getText().length() == 0) {
             errorLabel.setText("Le champ ne peut être vide :/");
         } else {
@@ -221,78 +252,38 @@ public class login extends Panel {
     }
 
 
-    public void authenticate(String user, String password) {
-        if (!offlineAuth.get()) {
-            Authenticator authenticator = new Authenticator(Authenticator.MOJANG_AUTH_URL, AuthPoints.NORMAL_AUTH_POINTS);
+    public void authenticate(String user, String password) throws AuthenticationException {
+            AzAuthenticator authenticator = new AzAuthenticator("https://odysseyus.fr");
 
             try {
-                AuthResponse response = authenticator.authenticate(AuthAgent.MINECRAFT, user, password, null);
 
-                saver.set("accessToken", response.getAccessToken());
-                saver.set("clientToken", response.getClientToken());
-                saver.save();
 
-                AuthInfos infos = new AuthInfos(
-                        response.getSelectedProfile().getName(),
-                        response.getAccessToken(),
-                        response.getClientToken(),
-                        response.getSelectedProfile().getId()
-                );
+
+                AuthInfos infos = authenticator.authenticate(user, password, AuthInfos.class);
+
+
+                saver.set("accessToken", infos.getAccessToken());
+                saver.set("Username", infos.getUsername());
+                saver.set("UUID", infos.getUuid());
+                    saver.save();
 
                 Launcher.getInstance().setAuthInfos(infos);
 
                 this.logger.info("Hello " + infos.getUsername());
 
                 panelManager.showPanel(new App());
-            } catch (AuthenticationException e) {
+
+
+            } catch (AuthenticationException | IOException e) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Erreur");
                 alert.setHeaderText("Une erreur est survenu lors de la connexion");
                 alert.setContentText(e.getMessage());
                 alert.show();
             }
-        } else {
-            AuthInfos infos = new AuthInfos(
-                    userField.getText(),
-                    UUID.randomUUID().toString(),
-                    UUID.randomUUID().toString()
-            );
-            saver.set("offline-username", infos.getUsername());
-            saver.save();
-            Launcher.getInstance().setAuthInfos(infos);
-
-            this.logger.info("Hello " + infos.getUsername());
-
-            panelManager.showPanel(new App());
         }
-    }
 
-    public void authenticateMS() {
-        MicrosoftAuthenticator authenticator = new MicrosoftAuthenticator();
-        authenticator.loginWithAsyncWebview().whenComplete((response, error) -> {
-            if (error != null) {
-                Launcher.getInstance().getLogger().err(error.toString());
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Erreur");
-                alert.setContentText(error.getMessage());
-                alert.show();
-                return;
-            }
 
-            saver.set("msAccessToken", response.getAccessToken());
-            saver.set("msRefreshToken", response.getRefreshToken());
-            saver.save();
-            Launcher.getInstance().setAuthInfos(new AuthInfos(
-                    response.getProfile().getName(),
-                    response.getAccessToken(),
-                    response.getProfile().getId()
-            ));
-            this.logger.info("Hello " + response.getProfile().getName());
-            this.panelManager.showPanel(new App());
-
-        });
-
-    }
     public TextField getUserField() {
         return userField;
     }
