@@ -7,6 +7,7 @@ import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import fr.flowarg.flowstringer.StringUtils;
 import fr.flowarg.flowupdater.FlowUpdater;
+import fr.flowarg.flowupdater.download.DownloadList;
 import fr.flowarg.flowupdater.download.IProgressCallback;
 import fr.flowarg.flowupdater.download.Step;
 import fr.flowarg.flowupdater.download.json.CurseFileInfo;
@@ -138,11 +139,11 @@ public class Home extends contentpanel {
 
 
             //@Override TRUC DE MERDE QUI FAIT TOUS BUG
-            public void update(long downloaded, long max) {
+            public void update(DownloadList.DownloadInfo info) {
                 Platform.runLater(() -> {
-                    percentTxt = decimalFormat.format(downloaded * 100.d / max) + "%";
+                    percentTxt = decimalFormat.format(info.getDownloadedFiles() * 100.d / info.getTotalToDownloadFiles()) + "%";
                     setStatus(String.format("%s (%s)", stepTxt, percentTxt));
-                    setProgress(downloaded, max);
+                    setProgress(info.getDownloadedFiles(), info.getTotalToDownloadFiles());
                 });
             }
 
@@ -179,7 +180,9 @@ public class Home extends contentpanel {
             modInfos.add(new CurseFileInfo(289479, 3553336)); //cgm
             modInfos.add(new CurseFileInfo(286660, 3103940)); //vehicle Mod
             modInfos.add(new CurseFileInfo(238222, 3590083)); //JEI
-            modInfos.add(new CurseFileInfo(520208, 3591034)); //Odysseyus
+
+            modInfos.add(new CurseFileInfo(520208, 3637586)); //Odysseyus
+
             modInfos.add(new CurseFileInfo(377448, 3581611)); //Beyond Earth
             modInfos.add(new CurseFileInfo(546554, 3581789)); //Space Bosstools Addons
             modInfos.add(new CurseFileInfo(284324, 3543338)); //Emojiful ( A rajouter sur Odysseyus)
@@ -189,6 +192,12 @@ public class Home extends contentpanel {
             modInfos.add(new CurseFileInfo(492574, 3449703)); //My server is Compatible
             modInfos.add(new CurseFileInfo(497637, 3406131)); //XK's
             modInfos.add(new CurseFileInfo(388800, 3604756)); //Polymorph
+            modInfos.add(new CurseFileInfo(266515, 3525789)); //industrial Forgegoing
+            modInfos.add(new CurseFileInfo(309927, 3456953)); //Curios API
+            modInfos.add(new CurseFileInfo(287342, 3346366)); //Titanium
+            modInfos.add(new CurseFileInfo(306770, 3459118)); //industrial Forgegoing
+
+
 
 
 
