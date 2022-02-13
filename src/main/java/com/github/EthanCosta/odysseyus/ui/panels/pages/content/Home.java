@@ -140,6 +140,7 @@ public class Home extends contentpanel {
 
             //@Override TRUC DE MERDE QUI FAIT TOUS BUG
             public void update(DownloadList.DownloadInfo info) {
+                double progress = info.getDownloadedBytes() / info.getTotalToDownloadBytes();
                 Platform.runLater(() -> {
                     percentTxt = decimalFormat.format(info.getDownloadedFiles() * 100.d / info.getTotalToDownloadFiles()) + "%";
                     setStatus(String.format("%s (%s)", stepTxt, percentTxt));
