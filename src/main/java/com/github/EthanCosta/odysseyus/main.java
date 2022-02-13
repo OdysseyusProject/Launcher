@@ -13,7 +13,6 @@ public class main {
     public static void main(String[] args) {
         try {
             Class.forName("javafx.application.Application");
-            //C VRAI
             System.out.println("Made by Tathan and bibi_fire because i suck in java");
             Application.launch(Launcher.class, args);
 
