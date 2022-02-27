@@ -154,7 +154,7 @@ public class login extends Panel {
         });
 
         ImageView imageView = new ImageView();
-        imageView.setImage(new Image("images/ody-logo.jpg"));
+        imageView.setImage(new Image("images/odysseyus-logo.png"));
         imageView.setPreserveRatio(true);
         imageView.getStyleClass().add("ms-login-btn");
         imageView.setFitHeight(165);
@@ -164,7 +164,7 @@ public class login extends Panel {
         imageView.setTranslateX(90);
         imageView.setOnMouseClicked(e -> {
             try {
-                Desktop.getDesktop().browse(new URI("https://odysseyus.fr/"));
+                Desktop.getDesktop().browse(new URI("https://odysseyus.fr/user/register"));
             }   catch (IOException | URISyntaxException ex) {
 
             ex.printStackTrace();
