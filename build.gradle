@@ -1,12 +1,12 @@
 plugins {
     id 'idea'
     id 'com.github.johnrengelman.shadow' version '7.0.0'
-    id 'java-library'
+    id 'java'
     id 'application'
-    id 'org.openjfx.javafxplugin' version '0.0.9'
+
 
 }
-
+//TODO Mettre JAVA 8
 
 group 'com.github.EthanCosta'
 version '2.3.9'
@@ -58,10 +58,6 @@ dependencies {
 
 }
 
-javafx {
-    version = 12
-    modules = ['javafx.controls', 'javafx.fxml', 'javafx.web', 'javafx.swing']
-}
 
 application {
     getMainClass().set('com.github.EthanCosta.odysseyus.main')

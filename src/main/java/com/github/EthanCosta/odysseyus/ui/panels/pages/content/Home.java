@@ -22,6 +22,8 @@ import fr.flowarg.flowupdater.versions.ForgeVersionBuilder;
 import fr.flowarg.flowupdater.versions.VanillaVersion;
 import fr.flowarg.openlauncherlib.NoFramework;
 
+import fr.theshark34.openlauncherlib.external.ExternalLaunchProfile;
+import fr.theshark34.openlauncherlib.external.ExternalLauncher;
 import fr.theshark34.openlauncherlib.minecraft.*;
 import fr.theshark34.openlauncherlib.util.Saver;
 import javafx.application.Platform;
@@ -168,26 +170,29 @@ public class Home extends contentpanel {
 
             final  List<CurseFileInfo> modInfos = new ArrayList<>();
 
-            modInfos.add(new CurseFileInfo(316867, 3328009)); //ElectroDyna
-            modInfos.add(new CurseFileInfo(318646, 3316889)); //nuclear science
-            modInfos.add(new CurseFileInfo(443915, 3328078)); //Ballistix
-            modInfos.add(new CurseFileInfo(220318, 3300293)); //Biomes O Plenty
-            modInfos.add(new CurseFileInfo(303557, 3286395)); //Better Animal +
-            modInfos.add(new CurseFileInfo(231095, 3234842)); //chisel and bits
-            modInfos.add(new CurseFileInfo(246640, 3321276)); //mystical
-            modInfos.add(new CurseFileInfo(272335, 3349690)); //cucumber
-            modInfos.add(new CurseFileInfo(55438, 3081350)); //furniture mod
-            modInfos.add(new CurseFileInfo(289380, 3336021)); //Obfuscate
-            modInfos.add(new CurseFileInfo(289479, 3553336)); //cgm
-            modInfos.add(new CurseFileInfo(286660, 3103940)); //vehicle Mod
-            modInfos.add(new CurseFileInfo(238222, 3590083)); //JEI
+            modInfos.add(new CurseFileInfo(340583, 3003242)); //Bettercaves
+            modInfos.add(new CurseFileInfo(389665, 3194993)); //BetterMineshaft
+            modInfos.add(new CurseFileInfo(220318, 2595022)); //Biome O plenty
+            modInfos.add(new CurseFileInfo(226321, 2537917)); //BloodMoon
+            modInfos.add(new CurseFileInfo(237749, 2902920)); //CoroUtil
+            modInfos.add(new CurseFileInfo(221826, 2996912)); //CustomNPC
+            modInfos.add(new CurseFileInfo(267602, 2915363)); //CTM
+            modInfos.add(new CurseFileInfo(229449, 2874756)); //EpicSiegeMod
+            modInfos.add(new CurseFileInfo(317310, 3278090)); //FlansMod
+            modInfos.add(new CurseFileInfo(231951, 2676501)); //Immersive Engineering
 
-            modInfos.add(new CurseFileInfo(520208, 3637586)); //Odysseyus
+            modInfos.add(new CurseFileInfo(269024, 2861574)); //The Lost Cities
+            modInfos.add(new CurseFileInfo(407884, 3355108)); //Modular Voice Chat
 
-            modInfos.add(new CurseFileInfo(377448, 3581611)); //Beyond Earth
-            modInfos.add(new CurseFileInfo(546554, 3581789)); //Space Bosstools Addons
-            modInfos.add(new CurseFileInfo(284324, 3543338)); //Emojiful ( A rajouter sur Odysseyus)
-            modInfos.add(new CurseFileInfo(289310, 3381163)); //Camera
+            modInfos.add(new CurseFileInfo(238222, 3043174)); //JEI
+
+            modInfos.add(new CurseFileInfo(243788, 2934384)); //ModernWarfare
+
+            modInfos.add(new CurseFileInfo(291499, 3346568)); //PTRLIB
+            modInfos.add(new CurseFileInfo(360795, 3634226)); //Rough Mobs revamped
+            modInfos.add(new CurseFileInfo(246391, 2710969)); //Though as nails
+            modInfos.add(new CurseFileInfo(237754, 2663393)); //Zombie Awereness
+            /*
             //modInfos.add(new CurseFileInfo(285612, 3211323)); //RandomPatches
             modInfos.add(new CurseFileInfo(470193, 3434629)); //Connectivity
             modInfos.add(new CurseFileInfo(492574, 3449703)); //My server is Compatible
@@ -207,6 +212,7 @@ public class Home extends contentpanel {
             mekanism.add(new CurseFileInfo(268567, 3590102)); //tools
             mekanism.add(new CurseFileInfo(268566, 3590101)); //generator
 
+*/
 
 
 
@@ -214,9 +220,7 @@ public class Home extends contentpanel {
 
 
 
-
-            modInfos.addAll(addons.modAddons);
-            modInfos.addAll(mekanism);
+            //modInfos.addAll(addons.modAddons);
 
             final List<Mod> files = Mod.getModsFromJson(MinecraftInfos.MODS_LIST_URL);
 
@@ -246,7 +250,7 @@ public class Home extends contentpanel {
                     .build();
 
             updater.update(Launcher.getInstance().getLauncherDir());
-            this.startGame();
+            this.startGame(MinecraftInfos.FORGE_VERSION);
 
 
         } catch (Exception exception) {
@@ -256,13 +260,13 @@ public class Home extends contentpanel {
     }
 
 
-
+/*
     public void startGame() {
 
         try {
             final var framework = new NoFramework(Launcher.getInstance().getLauncherDir(), Launcher.getInstance().getAuthInfos(), GameFolder.FLOW_UPDATER);
 
-            framework.setServerName("OdysseyusV2");
+            framework.setServerName("Odysseyus");
             framework.setAdditionalArgs(Arrays.asList("--server=45.90.163.68", "--port=25565"));
             framework.setAdditionalVmArgs(Collections.singletonList(this.getRamArgsFromSaver()));
 
@@ -277,6 +281,40 @@ public class Home extends contentpanel {
         }
 
     }
+    */
+
+    public void startGame(String gameVersion) {
+        GameInfos infos = new GameInfos(
+                MinecraftInfos.SERVER_NAME,
+                true,
+                new GameVersion(gameVersion, MinecraftInfos.OLL_GAME_TYPE.setNFVD(MinecraftInfos.OLL_FORGE_DISCRIMINATOR)),
+                new GameTweak[]{GameTweak.FORGE}
+        );
+
+        try {
+            ExternalLaunchProfile profile = MinecraftLauncher.createExternalProfile(infos, GameFolder.FLOW_UPDATER, Launcher.getInstance().getAuthInfos());
+            profile.getVmArgs().add(this.getRamArgsFromSaver());
+            ExternalLauncher launcher = new ExternalLauncher(profile);
+
+            Platform.runLater(() -> panelManager.getStage().hide());
+
+            Process p = launcher.launch();
+
+            Platform.runLater(() -> {
+                try {
+                    p.waitFor();
+                    Platform.exit();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            });
+        } catch (Exception exception) {
+            exception.printStackTrace();
+            Launcher.getInstance().getLogger().err(exception.toString());
+        }
+    }
+
+
 
 
     public String getRamArgsFromSaver() {
@@ -308,6 +346,7 @@ public class Home extends contentpanel {
     }
 
     public enum StepInfo {
+        INTEGRATION("Integration..."),
         READ("Préparation du chantier..."),
         DL_LIBS("Téléchargement d'Odysseyus"), //Téléchargement des libraries...
         DL_ASSETS("Création du réacteur..."),

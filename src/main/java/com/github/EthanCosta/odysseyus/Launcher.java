@@ -28,7 +28,7 @@ public class Launcher extends Application {
 private PanelManager panelManager;
     private static Launcher instance;
     private final ILogger logger;
-    public final Path launcherDir = GameDirGenerator.createGameDir("OdysseyusV2", true);
+    public final Path launcherDir = GameDirGenerator.createGameDir("Odysseyus", true);
     private final Saver saver;
     private AuthInfos authInfos = null;
 
@@ -38,7 +38,7 @@ private PanelManager panelManager;
         this.logger = new Logger("[Odysseyus Launcher]", Path.of(this.launcherDir.toString(), "launcher.log"));
         if (!this.launcherDir.toFile().exists()) {
             if (!this.launcherDir.toFile().mkdir()) {
-                this.logger.err("Impossible de créer le dossier .OdysseyusV2");
+                this.logger.err("Impossible de créer le dossier .Odysseyus");
             }
         }
 
