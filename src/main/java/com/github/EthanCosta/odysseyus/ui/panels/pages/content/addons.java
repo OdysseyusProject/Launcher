@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,7 +44,7 @@ public class addons extends contentpanel {
     CheckBox better_animal_model = new CheckBox("Better Animal Models");
 
 
-    public final Saver saver = new Saver(Path.of(launcherDir.toString(), "addons.properties"));
+    public final Saver saver = new Saver(Paths.get(launcherDir.toString(), "addons.properties"));
 
     public static List<CurseFileInfo> modAddons = new ArrayList<>();
 

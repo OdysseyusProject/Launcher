@@ -21,6 +21,7 @@ import re.alwyn974.minecraftserverping.MinecraftServerPingOptions;
 
 import java.io.IOException;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class infos extends contentpanel {
 
@@ -52,7 +53,7 @@ public class infos extends contentpanel {
     public void init(PanelManager panelManager) {
         super.init(panelManager);
 
-        saver = new Saver(Path.of(launcherDir.toString(), "config.properties"));
+        saver = new Saver(Paths.get(launcherDir.toString(), "config.properties"));
         saver.load();
 
         try {

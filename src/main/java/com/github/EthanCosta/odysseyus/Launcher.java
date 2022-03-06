@@ -22,6 +22,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.UUID;
 
 public class Launcher extends Application {
@@ -35,14 +36,14 @@ private PanelManager panelManager;
 
     public Launcher() {
         instance = this;
-        this.logger = new Logger("[Odysseyus Launcher]", Path.of(this.launcherDir.toString(), "launcher.log"));
+        this.logger = new Logger("[Odysseyus Launcher]", Paths.get(this.launcherDir.toString(), "launcher.log"));
         if (!this.launcherDir.toFile().exists()) {
             if (!this.launcherDir.toFile().mkdir()) {
                 this.logger.err("Impossible de créer le dossier .Odysseyus");
             }
         }
 
-        saver = new Saver(Path.of(launcherDir.toString(), "config.properties"));
+        saver = new Saver(Paths.get(launcherDir.toString(), "config.properties"));
         saver.load();
     }
 

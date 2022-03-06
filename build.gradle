@@ -39,14 +39,15 @@ dependencies {
 
     implementation 'fr.litarvan:openauth:1.1.1'
 
-    implementation 'de.jensd:fontawesomefx-fontawesome:4.7.0-9.1.2'
+    implementation 'de.jensd:fontawesomefx:8.9'
 
     implementation 'fr.flowarg:flowupdater:1.5.3'
     implementation 'fr.flowarg:openlauncherlib:3.2.3'
 
 
 
-    implementation 'com.github.goxr3plus:FX-BorderlessScene:4.+'
+    implementation group: 'com.github.goxr3plus', name: 'FX-BorderlessScene', version: '4.4.0'
+
     implementation 'com.github.oshi:oshi-core:5.8.6'
     implementation 'com.azuriom:azauth:1.0-SNAPSHOT'
 
