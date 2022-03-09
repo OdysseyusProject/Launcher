@@ -1,6 +1,6 @@
-JVM info: Oracle Corporation - 11.0.12 - 11.0.12+8-LTS-237
+JVM info: Oracle Corporation - 1.8.0_202 - 25.202-b08
 java.net.preferIPv4Stack=true
-Found java version 11.0.12
+Found java version 1.8.0_202
 Target Directory: C:\Users\costa\AppData\Roaming\.Odysseyus
 Extracting json
 Considering minecraft client jar

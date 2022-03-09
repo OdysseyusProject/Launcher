@@ -26,7 +26,6 @@ public class main {
 
         }
 
-        System.out.println(addons.modAddons);
     }
 
 

@@ -6,6 +6,8 @@ import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import fr.flowarg.flowupdater.download.json.CurseFileInfo;
 
+import fr.flowarg.flowupdater.download.json.ExternalFile;
+import fr.flowarg.flowupdater.download.json.Mod;
 import fr.theshark34.openlauncherlib.minecraft.util.GameDirGenerator;
 import fr.theshark34.openlauncherlib.util.Saver;
 import javafx.geometry.Insets;
@@ -32,21 +34,18 @@ public class addons extends contentpanel {
     //private final Saver saver = Launcher.getInstance().getSaver()
     public final Path launcherDir = GameDirGenerator.createGameDir("OdysseyusV2", true);
     GridPane contentPane = new GridPane();
-    CheckBox dynamic_surroundings = new CheckBox("Dynamic Surroundings");
 
-
-    CheckBox boobs_mod = new CheckBox("Wildfire's Female Gender Mod");
-    CheckBox inventory_hud_plus = new CheckBox("Inventory HUD +");
-    CheckBox item_physics = new CheckBox("ItemPhysic Full");
-    CheckBox better_animation2 = new CheckBox("Better Animations Collection");
-    CheckBox Controllable = new CheckBox("Controllable");
     Button tutosbtn = new Button("Infos Addons");
-    CheckBox better_animal_model = new CheckBox("Better Animal Models");
+
+    CheckBox replaymod = new CheckBox("Replay Mod");
+
 
 
     public final Saver saver = new Saver(Paths.get(launcherDir.toString(), "addons.properties"));
 
-    public static List<CurseFileInfo> modAddons = new ArrayList<>();
+    final List<Mod> modAddons = new ArrayList<>();
+
+
 
 
 
@@ -92,226 +91,36 @@ public class addons extends contentpanel {
         title.setTranslateX(10d);
         contentPane.getChildren().add(title);
 
-        //Dyna
 
-        dynamic_surroundings.getStyleClass().add("addons-mods");
-        setLeft(dynamic_surroundings);
-        setTop(dynamic_surroundings);
-        dynamic_surroundings.setTranslateX(10d);
-        dynamic_surroundings.setIndeterminate(false);
-        dynamic_surroundings.setTranslateY(60d);
-        setCanTakeAllSize(dynamic_surroundings);
-        dynamic_surroundings.setFont(Font.font("Verdana", FontPosture.REGULAR, 13f));
-        dynamic_surroundings.selectedProperty().addListener((e, old, newValue) -> {
+        replaymod.getStyleClass().add("addons-mods");
+        setLeft(replaymod);
+        setTop(replaymod);
+        replaymod.setTranslateX(10d);
+        replaymod.setIndeterminate(false);
+        replaymod.setTranslateY(60d);
+        setCanTakeAllSize(replaymod);
+        replaymod.setFont(Font.font("Verdana", FontPosture.REGULAR, 13f));
+        replaymod.selectedProperty().addListener((e, old, newValue) -> {
             if (newValue) {
 
-                modAddons.add(new CurseFileInfo(238891, 3502320)); //dynamic surrounding
-                System.out.println("Dynamic Surroundings add");
-                saver.set("dynamic", "true");
+                modAddons.add(new Mod("Replaymod.jar", "984489e9ec23c1b4e6c4ff5a00b35eef1be8dde8", 13504148, "https://odysseyus.fr/mods/replaymod.jar"));
+                System.out.println("ReplayMod");
+                saver.set("replay", "true");
                 saver.save();
 
 
             } else {
 
-                modAddons.remove(new CurseFileInfo(238891, 3502320));
-                System.out.println("Dynamic Surroundings remove");
-                saver.remove("dynamic");
+                modAddons.remove(new Mod("Replaymod.jar", "984489e9ec23c1b4e6c4ff5a00b35eef1be8dde8", 13504148, "https://odysseyus.fr/mods/replaymod.jar"));
+                System.out.println("ReplayMod remove");
+                saver.remove("replay");
                 saver.save();
 
             }
 
         });
-        contentPane.getChildren().add(dynamic_surroundings);
-        dynamic_surroundings.setSelected(Boolean.valueOf(saver.get("dynamic", "false")));
-
-
-        //Boobs Mod
-        boobs_mod.getStyleClass().add("addons-mods");
-        setLeft(boobs_mod);
-        setTop(boobs_mod);
-        boobs_mod.setTranslateX(10d);
-        boobs_mod.setTranslateY(85d);
-        setCanTakeAllSize(boobs_mod);
-        boobs_mod.setFont(Font.font("Verdana", FontPosture.REGULAR, 13f));
-        boobs_mod.selectedProperty().addListener((e, old, newValue) -> {
-            if (newValue) {
-
-                //saver.set("boobs_mod", );
-                modAddons.add(new CurseFileInfo(481655, 3459078)); //Wildfire's Female Gender Mod
-                System.out.println("Wildfire's Female Gender Mod ajouté");
-                saver.set("boobs", "true");
-                saver.save();
-            } else {
-                modAddons.remove(new CurseFileInfo(481655, 3459078)); //Wildfire's Female Gender Mod
-                System.out.println("Wildfire's Female Gender Mod supprimé de la liste");
-                saver.remove("boobs");
-                saver.save();
-
-
-
-            }
-
-        });
-        contentPane.getChildren().add(boobs_mod);
-        boobs_mod.setSelected(Boolean.valueOf(saver.get("boobs", "false")));
-
-        //Inventory HUD +
-
-        inventory_hud_plus.getStyleClass().add("addons-mods");
-        setLeft(inventory_hud_plus);
-        setTop(inventory_hud_plus);
-        inventory_hud_plus.setTranslateX(10d);
-        inventory_hud_plus.setTranslateY(110d);
-        inventory_hud_plus.setFont(Font.font("Verdana", FontPosture.REGULAR, 13f));
-        setCanTakeAllSize(inventory_hud_plus);
-        inventory_hud_plus.selectedProperty().addListener((e, old, newValue) -> {
-            if (newValue) {
-
-                modAddons.add(new CurseFileInfo(357540, 3505181)); //Wildfire's Female Gender Mod
-                System.out.println("Inventory HUD+ ajouté");
-               saver.set("Inventory", "true");
-               saver.save();
-
-            } else {
-                modAddons.remove(new CurseFileInfo(357540, 3505181)); //Wildfire's Female Gender Mod
-                System.out.println("Inventory HUD+ supprimé de la liste");
-                saver.remove("Inventory");
-                saver.load();
-
-
-            }
-
-        });
-        contentPane.getChildren().add(inventory_hud_plus);
-        inventory_hud_plus.setSelected(Boolean.valueOf(saver.get("Inventory", "false")));
-
-
-        //item_physics
-
-        item_physics.getStyleClass().add("addons-mods"); //25
-        setLeft(item_physics);
-        setTop(item_physics);
-        item_physics.setTranslateX(10d);
-        item_physics.setTranslateY(135d);
-        setCanTakeAllSize(item_physics);
-        item_physics.setFont(Font.font("Verdana", FontPosture.REGULAR, 13f));
-        item_physics.selectedProperty().addListener((e, old, newValue) -> {
-            if (newValue) {
-
-                modAddons.add(new CurseFileInfo(258587, 3285731)); //Item
-                modAddons.add(new CurseFileInfo(257814, 3419983)); //creative core
-                System.out.println("Item Physics ajouté");
-                saver.set("physics", "true");
-                saver.save();
-
-            } else {
-                modAddons.remove(new CurseFileInfo(258587, 3285731)); //Item
-                modAddons.remove(new CurseFileInfo(257814, 3419983)); //creative core
-
-                System.out.println("Item Physics supprimé de la liste");
-                saver.remove("physics");
-                saver.save();
-
-
-            }
-
-        });
-        contentPane.getChildren().add(item_physics);
-        item_physics.setSelected(Boolean.valueOf(saver.get("physics", "false")));
-
-
-
-
-        better_animation2.getStyleClass().add("addons-mods");
-        setLeft(better_animation2);
-        setTop(better_animation2);
-        better_animation2.setTranslateX(10d);
-        better_animation2.setTranslateY(160d);
-        better_animation2.setFont(Font.font("Verdana", FontPosture.REGULAR, 13f));
-        setCanTakeAllSize(better_animation2);
-        better_animation2.selectedProperty().addListener((e, old, newValue) -> {
-            if (newValue) {
-
-                modAddons.add(new CurseFileInfo(323976, 3517404)); //animation
-                modAddons.add(new CurseFileInfo(495476, 3517499)); //Puzzle Libs
-                saver.set("better_anim", "true");
-                saver.load();
-
-
-
-                System.out.println("Better Animations Collection ajouté");
-            } else {
-                modAddons.remove(new CurseFileInfo(323976, 3517404)); //Animations
-                modAddons.remove(new CurseFileInfo(495476, 3517499)); //Puzzle Libs
-                System.out.println("Better Animations Collection supprimé de la liste");
-                saver.remove("better_anim");
-                saver.save();
-
-
-            }
-
-        });
-        contentPane.getChildren().add(better_animation2);
-        better_animation2.setSelected(Boolean.valueOf(saver.get("better_anim", "false")));
-
-
-        Controllable.getStyleClass().add("addons-mods");
-        setLeft(Controllable);
-        setTop(Controllable);
-        Controllable.setTranslateX(10d);
-        Controllable.setTranslateY(185d);
-        setCanTakeAllSize(Controllable);
-        Controllable.setFont(Font.font("Verdana", FontPosture.REGULAR, 13f));
-        Controllable.selectedProperty().addListener((e, old, newValue) -> {
-            if (newValue) {
-
-                modAddons.add(new CurseFileInfo(317269, 3519536)); //Controllable
-
-
-                System.out.println("Controllable ajouté");
-                saver.set("Controllable", "true");
-
-            } else {
-                modAddons.remove(new CurseFileInfo(317269, 3519536)); //Controllable
-                System.out.println("Controllable supprimé de la liste");
-                saver.remove("Controllable");
-
-
-            }
-
-        });
-        contentPane.getChildren().add(Controllable);
-        Controllable.setSelected(Boolean.valueOf(saver.get("Controllable", "false")));
-
-
-        better_animal_model.getStyleClass().add("addons-mods");
-        setLeft(better_animal_model);
-        setTop(better_animal_model);
-        better_animal_model.setTranslateX(10d);
-        better_animal_model.setTranslateY(210d);
-        setCanTakeAllSize(better_animal_model);
-        better_animal_model.setFont(Font.font("Verdana", FontPosture.REGULAR, 13f));
-
-        better_animal_model.selectedProperty().addListener((e, old, newValue) -> {
-            if (newValue) {
-
-                modAddons.add(new CurseFileInfo(287443, 3231449)); //Better Animal Models
-
-
-                System.out.println("Better animal models ajouté");
-                saver.set("BetterAnimalModels", "true");
-
-            } else {
-                modAddons.remove(new CurseFileInfo(287443, 3231449)); //Better Animal Models
-                System.out.println("Controllable supprimé de la liste");
-                saver.remove("BetterAnimalModels");
-
-
-            }
-
-        });
-        contentPane.getChildren().add(better_animal_model);
-        better_animal_model.setSelected(Boolean.valueOf(saver.get("BetterAnimalModels", "false")));
+        contentPane.getChildren().add(replaymod);
+        replaymod.setSelected(Boolean.valueOf(saver.get("replay", "false")));
 
 
 

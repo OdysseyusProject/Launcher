@@ -57,6 +57,10 @@
     -fx-fill: white;
 }
 
+.home-icon {
+    -fx-fill: blue
+}
+
 .logout-btn:hover {
     -fx-background-radius: 10px;
     -fx-background-color: rgba(255, 255, 255, 0.2);

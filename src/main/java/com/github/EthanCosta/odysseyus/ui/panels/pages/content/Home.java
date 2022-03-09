@@ -187,13 +187,17 @@ public class Home extends contentpanel {
             modInfos.add(new CurseFileInfo(238222, 3043174)); //JEI
 
             modInfos.add(new CurseFileInfo(243788, 2934384)); //ModernWarfare
+            modInfos.add(new CurseFileInfo(79616, 3347832)); //Decocraft
+
 
             modInfos.add(new CurseFileInfo(291499, 3346568)); //PTRLIB
             modInfos.add(new CurseFileInfo(360795, 3634226)); //Rough Mobs revamped
             modInfos.add(new CurseFileInfo(246391, 2710969)); //Though as nails
             modInfos.add(new CurseFileInfo(237754, 2663393)); //Zombie Awereness
-            /*
-            //modInfos.add(new CurseFileInfo(285612, 3211323)); //RandomPatches
+
+
+/*
+            modInfos.add(new CurseFileInfo(285612, 3211323)); //RandomPatches
             modInfos.add(new CurseFileInfo(470193, 3434629)); //Connectivity
             modInfos.add(new CurseFileInfo(492574, 3449703)); //My server is Compatible
             modInfos.add(new CurseFileInfo(497637, 3406131)); //XK's
@@ -202,32 +206,16 @@ public class Home extends contentpanel {
             modInfos.add(new CurseFileInfo(309927, 3456953)); //Curios API
             modInfos.add(new CurseFileInfo(287342, 3346366)); //Titanium
             modInfos.add(new CurseFileInfo(306770, 3459118)); //industrial Forgegoing
-
-
-
-
-
             final  List<CurseFileInfo> mekanism = new ArrayList<>();
             mekanism.add(new CurseFileInfo(345425, 3590103)); //addition
             mekanism.add(new CurseFileInfo(268567, 3590102)); //tools
             mekanism.add(new CurseFileInfo(268566, 3590101)); //generator
-
-*/
-
-
-
-
-
-
-
-            //modInfos.addAll(addons.modAddons);
-
+            modInfos.addAll(addons.modAddons);
             final List<Mod> files = Mod.getModsFromJson(MinecraftInfos.MODS_LIST_URL);
-
             ExternalFile.getExternalFilesFromJson("https://odysseyus.fr/external.json");
 
 
-
+*/
 
             final UpdaterOptions options = new UpdaterOptions.UpdaterOptionsBuilder()
                     .build();
@@ -235,10 +223,10 @@ public class Home extends contentpanel {
 
             final AbstractForgeVersion forge = new ForgeVersionBuilder(MinecraftInfos.FORGE_VERSION_TYPE)
                     .withForgeVersion(MinecraftInfos.FORGE_VERSION)
-                    .withMods(files)
+                    //.withMods(files)
                     .withCurseMods(modInfos)
                     .withOptiFine(new OptiFineInfo(MinecraftInfos.OPTIFINE_VERSION, false))
-                    .withFileDeleter(new ModFileDeleter(true))
+                    //.withFileDeleter(new ModFileDeleter(true))
                     .build();
 
             final FlowUpdater updater = new FlowUpdater.FlowUpdaterBuilder()
@@ -294,6 +282,7 @@ public class Home extends contentpanel {
         try {
             ExternalLaunchProfile profile = MinecraftLauncher.createExternalProfile(infos, GameFolder.FLOW_UPDATER, Launcher.getInstance().getAuthInfos());
             profile.getVmArgs().add(this.getRamArgsFromSaver());
+            profile.getArgs().addAll(Arrays.asList("--server=45.90.163.68", "--port=25567"));
             ExternalLauncher launcher = new ExternalLauncher(profile);
 
             Platform.runLater(() -> panelManager.getStage().hide());
@@ -347,11 +336,11 @@ public class Home extends contentpanel {
 
     public enum StepInfo {
         INTEGRATION("Integration..."),
-        READ("Préparation du chantier..."),
+        READ("Mise en place des zombies..."),
         DL_LIBS("Téléchargement d'Odysseyus"), //Téléchargement des libraries...
-        DL_ASSETS("Création du réacteur..."),
-        EXTRACT_NATIVES("Extraction de l'uranium..."),
-        FORGE("Mise en place des planêtes..."),
+        DL_ASSETS("Explosion des nukes..."),
+        EXTRACT_NATIVES("Création des armes..."),
+        FORGE("Construction du bunker..."),
         FABRIC("Installation de fabric..."),
         MODS("Démarrage d'Odysseyus..."),
         EXTERNAL_FILES("Téléchargement des fichier externes..."),
