@@ -194,6 +194,12 @@ public class Home extends contentpanel {
             modInfos.add(new CurseFileInfo(321792, 3682998)); //Aquatic
             modInfos.add(new CurseFileInfo(419286, 3679872)); //Mixin Booter
 
+            final List<Mod> mods = new ArrayList<>();
+            mods.addAll(addons.modAddons);
+
+            modInfos.addAll(addons.curseModAddons);
+
+
             final UpdaterOptions options = new UpdaterOptions.UpdaterOptionsBuilder()
                     .build();
 
@@ -201,6 +207,7 @@ public class Home extends contentpanel {
             final AbstractForgeVersion forge = new ForgeVersionBuilder(MinecraftInfos.FORGE_VERSION_TYPE)
                     .withForgeVersion(MinecraftInfos.FORGE_VERSION)
                     .withCurseMods(modInfos)
+                    .withMods(mods)
                     .withOptiFine(new OptiFineInfo(MinecraftInfos.OPTIFINE_VERSION, false))
                     .withFileDeleter(new ModFileDeleter(true))
                     .build();

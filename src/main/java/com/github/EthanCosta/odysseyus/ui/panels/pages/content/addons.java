@@ -38,17 +38,16 @@ public class addons extends contentpanel {
     Button tutosbtn = new Button("Infos Addons");
 
     CheckBox replaymod = new CheckBox("Replay Mod");
+    CheckBox dyna = new CheckBox("Dynamic Surrounding");
+    CheckBox controllable = new CheckBox("controllable");
+
 
 
 
     public final Saver saver = new Saver(Paths.get(launcherDir.toString(), "addons.properties"));
 
-    final List<Mod> modAddons = new ArrayList<>();
-
-
-
-
-
+    public static List<Mod> modAddons = new ArrayList<>();
+    public static List<CurseFileInfo> curseModAddons = new ArrayList<>();
 
     public String getName() {
         return "addons";
@@ -67,7 +66,6 @@ public class addons extends contentpanel {
 
     public void init(PanelManager panelManager) {
         super.init(panelManager);
-
 
         // Background
         this.layout.getStyleClass().add("settings-layout");
@@ -121,6 +119,73 @@ public class addons extends contentpanel {
         });
         contentPane.getChildren().add(replaymod);
         replaymod.setSelected(Boolean.valueOf(saver.get("replay", "false")));
+
+
+        dyna.getStyleClass().add("addons-mods");
+        setLeft(dyna);
+        setTop(dyna);
+        dyna.setTranslateX(10d);
+        dyna.setIndeterminate(false);
+        dyna.setTranslateY(80d);
+        setCanTakeAllSize(dyna);
+        dyna.setFont(Font.font("Verdana", FontPosture.REGULAR, 13f));
+        dyna.selectedProperty().addListener((e, old, newValue) -> {
+            if (newValue) {
+
+                curseModAddons.add(new CurseFileInfo(307806, 2820815)); //OreLib
+                curseModAddons.add(new CurseFileInfo(238891, 3497269)); //Dynamic
+
+                System.out.println("Dynamic and OreLib");
+                saver.set("dyna", "true");
+                saver.save();
+
+
+            } else {
+
+                curseModAddons.remove(new CurseFileInfo(307806, 2820815)); //OreLib
+                curseModAddons.remove(new CurseFileInfo(238891, 3497269)); //Dynamic
+                System.out.println("Dynamic and OreLib remove");
+                saver.remove("dyna");
+                saver.save();
+
+            }
+
+        });
+        contentPane.getChildren().add(dyna);
+        dyna.setSelected(Boolean.valueOf(saver.get("dyna", "false")));
+
+
+
+
+        controllable.getStyleClass().add("addons-mods");
+        setLeft(controllable);
+        setTop(controllable);
+        controllable.setTranslateX(10d);
+        controllable.setIndeterminate(false);
+        controllable.setTranslateY(100d);
+        setCanTakeAllSize(controllable);
+        controllable.setFont(Font.font("Verdana", FontPosture.REGULAR, 13f));
+        controllable.selectedProperty().addListener((e, old, newValue) -> {
+            if (newValue) {
+
+                curseModAddons.add(new CurseFileInfo(317269, 3222475)); //controllable
+
+                System.out.println("controllable");
+                saver.set("controllable", "true");
+                saver.save();
+
+            } else {
+                curseModAddons.add(new CurseFileInfo(317269, 3222475)); //controllable
+                System.out.println("controllable remove");
+                saver.remove("controllable");
+                saver.save();
+
+            }
+
+        });
+        contentPane.getChildren().add(dyna);
+        controllable.setSelected(Boolean.valueOf(saver.get("controllable", "false")));
+
 
 
 
