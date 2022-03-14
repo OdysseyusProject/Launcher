@@ -35,6 +35,8 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 
+import java.io.File;
+import java.net.URL;
 import java.nio.file.Path;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -169,13 +171,11 @@ public class Home extends contentpanel {
 
 
             final  List<CurseFileInfo> modInfos = new ArrayList<>();
-
             modInfos.add(new CurseFileInfo(340583, 3003242)); //Bettercaves
             modInfos.add(new CurseFileInfo(389665, 3194993)); //BetterMineshaft
             modInfos.add(new CurseFileInfo(220318, 2595022)); //Biome O plenty
             modInfos.add(new CurseFileInfo(226321, 2537917)); //BloodMoon
             modInfos.add(new CurseFileInfo(237749, 2902920)); //CoroUtil
-            modInfos.add(new CurseFileInfo(221826, 2996912)); //CustomNPC
             modInfos.add(new CurseFileInfo(267602, 2915363)); //CTM
             modInfos.add(new CurseFileInfo(229449, 2874756)); //EpicSiegeMod
             modInfos.add(new CurseFileInfo(317310, 3278090)); //FlansMod
@@ -183,39 +183,16 @@ public class Home extends contentpanel {
 
             modInfos.add(new CurseFileInfo(269024, 2861574)); //The Lost Cities
             modInfos.add(new CurseFileInfo(407884, 3355108)); //Modular Voice Chat
-
             modInfos.add(new CurseFileInfo(238222, 3043174)); //JEI
-
             modInfos.add(new CurseFileInfo(243788, 2934384)); //ModernWarfare
             modInfos.add(new CurseFileInfo(79616, 3347832)); //Decocraft
-
-
             modInfos.add(new CurseFileInfo(291499, 3346568)); //PTRLIB
             modInfos.add(new CurseFileInfo(360795, 3634226)); //Rough Mobs revamped
             modInfos.add(new CurseFileInfo(246391, 2710969)); //Though as nails
             modInfos.add(new CurseFileInfo(237754, 2663393)); //Zombie Awereness
-
-
-/*
-            modInfos.add(new CurseFileInfo(285612, 3211323)); //RandomPatches
-            modInfos.add(new CurseFileInfo(470193, 3434629)); //Connectivity
-            modInfos.add(new CurseFileInfo(492574, 3449703)); //My server is Compatible
-            modInfos.add(new CurseFileInfo(497637, 3406131)); //XK's
-            modInfos.add(new CurseFileInfo(388800, 3604756)); //Polymorph
-            modInfos.add(new CurseFileInfo(266515, 3525789)); //industrial Forgegoing
-            modInfos.add(new CurseFileInfo(309927, 3456953)); //Curios API
-            modInfos.add(new CurseFileInfo(287342, 3346366)); //Titanium
-            modInfos.add(new CurseFileInfo(306770, 3459118)); //industrial Forgegoing
-            final  List<CurseFileInfo> mekanism = new ArrayList<>();
-            mekanism.add(new CurseFileInfo(345425, 3590103)); //addition
-            mekanism.add(new CurseFileInfo(268567, 3590102)); //tools
-            mekanism.add(new CurseFileInfo(268566, 3590101)); //generator
-            modInfos.addAll(addons.modAddons);
-            final List<Mod> files = Mod.getModsFromJson(MinecraftInfos.MODS_LIST_URL);
-            ExternalFile.getExternalFilesFromJson("https://odysseyus.fr/external.json");
-
-
-*/
+            modInfos.add(new CurseFileInfo(268250, 3382321)); //Immersive Petroleum
+            modInfos.add(new CurseFileInfo(321792, 3682998)); //Aquatic
+            modInfos.add(new CurseFileInfo(419286, 3679872)); //Mixin Booter
 
             final UpdaterOptions options = new UpdaterOptions.UpdaterOptionsBuilder()
                     .build();
@@ -223,13 +200,13 @@ public class Home extends contentpanel {
 
             final AbstractForgeVersion forge = new ForgeVersionBuilder(MinecraftInfos.FORGE_VERSION_TYPE)
                     .withForgeVersion(MinecraftInfos.FORGE_VERSION)
-                    //.withMods(files)
                     .withCurseMods(modInfos)
                     .withOptiFine(new OptiFineInfo(MinecraftInfos.OPTIFINE_VERSION, false))
-                    //.withFileDeleter(new ModFileDeleter(true))
+                    .withFileDeleter(new ModFileDeleter(true))
                     .build();
 
             final FlowUpdater updater = new FlowUpdater.FlowUpdaterBuilder()
+                    .withExternalFiles(ExternalFile.getExternalFilesFromJson("https://odysseyus.fr/extfiles.json"))
                     .withVanillaVersion(version)
                     .withLogger(Launcher.getInstance().getLogger())
                     .withProgressCallback(callback)
@@ -246,30 +223,6 @@ public class Home extends contentpanel {
             Platform.runLater(() -> panelManager.getStage().show());
         }
     }
-
-
-/*
-    public void startGame() {
-
-        try {
-            final var framework = new NoFramework(Launcher.getInstance().getLauncherDir(), Launcher.getInstance().getAuthInfos(), GameFolder.FLOW_UPDATER);
-
-            framework.setServerName("Odysseyus");
-            framework.setAdditionalArgs(Arrays.asList("--server=45.90.163.68", "--port=25565"));
-            framework.setAdditionalVmArgs(Collections.singletonList(this.getRamArgsFromSaver()));
-
-            if(fr.flowarg.flowcompat.Platform.isOnMac())
-                framework.getAdditionalVmArgs().add("-XstartOnFirstThread");
-
-            framework.launch(MinecraftInfos.GAME_VERSION, StringUtils.empty(MinecraftInfos.FORGE_VERSION, MinecraftInfos.GAME_VERSION + "-"));
-        }
-        catch (Exception e)
-        {
-            Launcher.getInstance().getLogger().printStackTrace(e);
-        }
-
-    }
-    */
 
     public void startGame(String gameVersion) {
         GameInfos infos = new GameInfos(
@@ -292,7 +245,7 @@ public class Home extends contentpanel {
             Platform.runLater(() -> {
                 try {
                     p.waitFor();
-                    Platform.exit();
+                   // Platform.exit();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -335,7 +288,7 @@ public class Home extends contentpanel {
     }
 
     public enum StepInfo {
-        INTEGRATION("Integration..."),
+        INTEGRATION("Préparation..."),
         READ("Mise en place des zombies..."),
         DL_LIBS("Téléchargement d'Odysseyus"), //Téléchargement des libraries...
         DL_ASSETS("Explosion des nukes..."),

@@ -26,7 +26,7 @@ import java.nio.file.Paths;
 public class infos extends contentpanel {
 
     GridPane contentPane = new GridPane();
-    public final Path launcherDir = GameDirGenerator.createGameDir("OdysseyusV2", true);
+    public final Path launcherDir = GameDirGenerator.createGameDir("Odysseyus", true);
     private Saver saver;
 
 

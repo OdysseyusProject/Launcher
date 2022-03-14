@@ -32,7 +32,7 @@ import java.util.List;
 
 public class addons extends contentpanel {
     //private final Saver saver = Launcher.getInstance().getSaver()
-    public final Path launcherDir = GameDirGenerator.createGameDir("OdysseyusV2", true);
+    public final Path launcherDir = GameDirGenerator.createGameDir("Odysseyus", true);
     GridPane contentPane = new GridPane();
 
     Button tutosbtn = new Button("Infos Addons");

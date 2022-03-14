@@ -20,7 +20,7 @@ public class MinecraftInfos {
     public static final GameType OLL_GAME_TYPE = GameType.V1_8_HIGHER;
 
     public static final NewForgeVersionDiscriminator OLL_FORGE_DISCRIMINATOR = new NewForgeVersionDiscriminator(
-            "14.23.5.2860",
+            "14.23.5.2855",
             MinecraftInfos.GAME_VERSION,
             "20210115.111550"
     );
