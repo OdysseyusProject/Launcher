@@ -194,6 +194,9 @@ public class Home extends contentpanel {
             modInfos.add(new CurseFileInfo(321792, 3682998)); //Aquatic
             modInfos.add(new CurseFileInfo(419286, 3679872)); //Mixin Booter
 
+
+
+
             final List<Mod> mods = new ArrayList<>();
             mods.addAll(addons.modAddons);
 

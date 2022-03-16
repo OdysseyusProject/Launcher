@@ -4,12 +4,11 @@ plugins {
     id 'java'
     id 'application'
 
-
 }
-//TODO Mettre JAVA 8
+
 
 group 'com.github.EthanCosta'
-version '2.3.9'
+version '3.1.2'
 
 repositories {
     mavenCentral()

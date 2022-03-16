@@ -126,7 +126,7 @@ public class addons extends contentpanel {
         setTop(dyna);
         dyna.setTranslateX(10d);
         dyna.setIndeterminate(false);
-        dyna.setTranslateY(80d);
+        dyna.setTranslateY(90d);
         setCanTakeAllSize(dyna);
         dyna.setFont(Font.font("Verdana", FontPosture.REGULAR, 13f));
         dyna.selectedProperty().addListener((e, old, newValue) -> {
@@ -162,7 +162,7 @@ public class addons extends contentpanel {
         setTop(controllable);
         controllable.setTranslateX(10d);
         controllable.setIndeterminate(false);
-        controllable.setTranslateY(100d);
+        controllable.setTranslateY(120d);
         setCanTakeAllSize(controllable);
         controllable.setFont(Font.font("Verdana", FontPosture.REGULAR, 13f));
         controllable.selectedProperty().addListener((e, old, newValue) -> {
@@ -183,7 +183,7 @@ public class addons extends contentpanel {
             }
 
         });
-        contentPane.getChildren().add(dyna);
+        contentPane.getChildren().add(controllable);
         controllable.setSelected(Boolean.valueOf(saver.get("controllable", "false")));
 
 
