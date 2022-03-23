@@ -3,7 +3,6 @@ plugins {
     id 'com.github.johnrengelman.shadow' version '7.0.0'
     id 'java'
     id 'application'
-
 }
 
 
@@ -62,6 +61,8 @@ dependencies {
 application {
     getMainClass().set('com.github.EthanCosta.odysseyus.main')
 }
+
+
 
 compileJava {
     options.encoding = "UTF-8"

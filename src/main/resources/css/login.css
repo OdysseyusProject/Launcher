@@ -3,7 +3,7 @@
 }
 
 .login-card {
-    -fx-background-color: linear-gradient(blue, cyan, white);
+    -fx-background-color: white;
 }
 
 .bg-image {
