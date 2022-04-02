@@ -196,10 +196,12 @@ public class Home extends contentpanel {
             modInfos.add(new CurseFileInfo(312141, 3172004)); //Grand Economy
             modInfos.add(new CurseFileInfo(318414, 2985978)); //Oxygen Core
             modInfos.add(new CurseFileInfo(285742, 2949817)); //Smooth Fonts
-          //modInfos.add(new CurseFileInfo(328248, 2974811)); //Oxygen Merchant
+            modInfos.add(new CurseFileInfo(328248, 2974811)); //Oxygen Merchant
             modInfos.add(new CurseFileInfo(334155, 2981869)); //Oxygen Mail
             modInfos.add(new CurseFileInfo(342390, 2983953)); //Oxygen Market
             modInfos.add(new CurseFileInfo(334153, 3050476)); //Oxygen Currency
+            modInfos.add(new CurseFileInfo(274159, 2568579)); //Immersive tech
+
 
 
             final List<Mod> mods = new ArrayList<>();
