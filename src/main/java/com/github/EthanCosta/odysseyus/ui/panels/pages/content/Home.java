@@ -201,6 +201,10 @@ public class Home extends contentpanel {
             modInfos.add(new CurseFileInfo(342390, 2983953)); //Oxygen Market
             modInfos.add(new CurseFileInfo(334153, 3050476)); //Oxygen Currency
             modInfos.add(new CurseFileInfo(274159, 2568579)); //Immersive tech
+            modInfos.add(new CurseFileInfo(306549, 2906537)); //Tips
+            modInfos.add(new CurseFileInfo(605442, 3733003)); //Odysseyus Rich Presence
+            modInfos.add(new CurseFileInfo(309110, 2655843)); //Bigger Packet Please
+
 
 
 
@@ -252,7 +256,7 @@ public class Home extends contentpanel {
         try {
             ExternalLaunchProfile profile = MinecraftLauncher.createExternalProfile(infos, GameFolder.FLOW_UPDATER, Launcher.getInstance().getAuthInfos());
             profile.getVmArgs().add(this.getRamArgsFromSaver());
-            profile.getArgs().addAll(Arrays.asList("--server=45.90.163.68", "--port=25567"));
+            profile.getArgs().addAll(Arrays.asList("--server=45.90.163.68", "--port=25565"));
             ExternalLauncher launcher = new ExternalLauncher(profile);
 
             Platform.runLater(() -> panelManager.getStage().hide());
