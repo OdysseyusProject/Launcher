@@ -47,6 +47,8 @@ public class addons extends contentpanel {
     public final Saver saver = new Saver(Paths.get(launcherDir.toString(), "addons.properties"));
 
     public static List<Mod> modAddons = new ArrayList<>();
+
+
     public static List<CurseFileInfo> curseModAddons = new ArrayList<>();
 
     public String getName() {
@@ -65,12 +67,15 @@ public class addons extends contentpanel {
     }
 
     public void init(PanelManager panelManager) {
+
         super.init(panelManager);
 
         // Background
         this.layout.getStyleClass().add("settings-layout");
         this.layout.setPadding(new Insets(40));
         setCanTakeAllSize(this.layout);
+     //   modAddons.add(new Mod("ffmpeg.exe", "60f19fc765fc005be713ffdff01b0f15a834ec6c", 78497792, "https://odysseyus.fr/ffmpeg.exe"));
+
 
         // Content
         contentPane.getStyleClass().add("content-pane");

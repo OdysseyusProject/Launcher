@@ -166,7 +166,6 @@ public class Home extends contentpanel {
 
             final VanillaVersion version = new VanillaVersion.VanillaVersionBuilder()
                     .withName(MinecraftInfos.GAME_VERSION)
-                    .withVersionType(MinecraftInfos.VERSION_TYPE)
                     .build();
 
 
@@ -184,7 +183,7 @@ public class Home extends contentpanel {
             modInfos.add(new CurseFileInfo(269024, 2861574)); //The Lost Cities
             modInfos.add(new CurseFileInfo(407884, 3355108)); //Modular Voice Chat
             modInfos.add(new CurseFileInfo(238222, 3043174)); //JEI
-            modInfos.add(new CurseFileInfo(243788, 2934384)); //ModernWarfare
+            modInfos.add(new CurseFileInfo(243788, 3157722)); //ModernWarfare
             modInfos.add(new CurseFileInfo(79616, 3347832)); //Decocraft
             modInfos.add(new CurseFileInfo(291499, 3346568)); //PTRLIB
             modInfos.add(new CurseFileInfo(360795, 3634226)); //Rough Mobs revamped
@@ -208,9 +207,12 @@ public class Home extends contentpanel {
 
 
 
-            final List<Mod> mods = new ArrayList<>();
-            mods.addAll(addons.modAddons);
 
+
+            final List<Mod> mods = new ArrayList<>();
+        //   mods.add(new Mod("hwyla.jar", "7280d5c0dab42436549bcefc63ff64a1049e5501", 453778, "https://odysseyus.fr/mods/hwyla.jar"));
+          //  mods.add(new Mod("wawla.jar", "783157c607149875de1e045d72382d370256257c", 94115, "https://odysseyus.fr/mods/wawla.jar"));
+            mods.addAll(addons.modAddons);
             modInfos.addAll(addons.curseModAddons);
 
 
@@ -231,7 +233,7 @@ public class Home extends contentpanel {
                     .withVanillaVersion(version)
                     .withLogger(Launcher.getInstance().getLogger())
                     .withProgressCallback(callback)
-                    .withForgeVersion(forge)
+                    .withModLoaderVersion(forge)
                     .withUpdaterOptions(options)
                     .build();
 
@@ -259,7 +261,7 @@ public class Home extends contentpanel {
             profile.getArgs().addAll(Arrays.asList("--server=45.90.163.68", "--port=25565"));
             ExternalLauncher launcher = new ExternalLauncher(profile);
 
-            Platform.runLater(() -> panelManager.getStage().hide());
+          // Platform.runLater(() -> panelManager.getStage().hide());
 
             Process p = launcher.launch();
 
