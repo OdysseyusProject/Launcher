@@ -193,6 +193,35 @@ public class addons extends contentpanel {
         contentPane.getChildren().add(controllable);
         controllable.setSelected(Boolean.valueOf(saver.get("controllable", "false")));
 
+        //Wawla
+        wawla.getStyleClass().add("addons-mods");
+        setLeft(wawla);
+        setTop(wawla);
+        wawla.setTranslateX(10d);
+        wawla.setIndeterminate(false);
+        wawla.setTranslateY(150d);
+        setCanTakeAllSize(wawla);
+        wawla.setFont(Font.font("Verdana", FontPosture.REGULAR, 13f));
+        wawla.selectedProperty().addListener((e, old, newValue) -> {
+            if (newValue) {
+
+                modAddons.add(new Mod("wawla.jar", "783157c607149875de1e045d72382d370256257c", 94115, "https://odysseyus.fr/mods/wawla.jar"));
+
+                System.out.println("controllable");
+                saver.set("wawla", "true");
+                saver.save();
+
+            } else {
+                modAddons.remove(new Mod("wawla.jar", "783157c607149875de1e045d72382d370256257c", 94115, "https://odysseyus.fr/mods/wawla.jar"));
+                System.out.println("wawla remove");
+                saver.remove("wawla");
+                saver.save();
+
+            }
+
+        });
+        contentPane.getChildren().add(wawla);
+        wawla.setSelected(Boolean.valueOf(saver.get("wawla", "false")));
 
 
 
