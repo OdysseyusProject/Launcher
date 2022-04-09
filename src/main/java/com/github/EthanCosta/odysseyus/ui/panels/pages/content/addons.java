@@ -40,6 +40,8 @@ public class addons extends contentpanel {
     CheckBox replaymod = new CheckBox("Replay Mod");
     CheckBox dyna = new CheckBox("Dynamic Surrounding");
     CheckBox controllable = new CheckBox("controllable");
+    CheckBox wawla = new CheckBox("What Are we looking for");
+
 
 
 
@@ -180,7 +182,7 @@ public class addons extends contentpanel {
                 saver.save();
 
             } else {
-                curseModAddons.add(new CurseFileInfo(317269, 3222475)); //controllable
+                curseModAddons.remove(new CurseFileInfo(317269, 3222475)); //controllable
                 System.out.println("controllable remove");
                 saver.remove("controllable");
                 saver.save();
@@ -190,6 +192,7 @@ public class addons extends contentpanel {
         });
         contentPane.getChildren().add(controllable);
         controllable.setSelected(Boolean.valueOf(saver.get("controllable", "false")));
+
 
 
 

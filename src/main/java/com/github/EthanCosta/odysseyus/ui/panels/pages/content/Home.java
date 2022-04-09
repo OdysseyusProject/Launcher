@@ -183,7 +183,9 @@ public class Home extends contentpanel {
             modInfos.add(new CurseFileInfo(269024, 2861574)); //The Lost Cities
             modInfos.add(new CurseFileInfo(407884, 3355108)); //Modular Voice Chat
             modInfos.add(new CurseFileInfo(238222, 3043174)); //JEI
-            modInfos.add(new CurseFileInfo(243788, 3157722)); //ModernWarfare
+            modInfos.add(new CurseFileInfo(243788, 3157722)); //ModernWarfare 4.6.2
+            //modInfos.add(new CurseFileInfo(243788, 2934384)); //ModernWarfare 4.4.6
+
             modInfos.add(new CurseFileInfo(79616, 3347832)); //Decocraft
             modInfos.add(new CurseFileInfo(291499, 3346568)); //PTRLIB
             modInfos.add(new CurseFileInfo(360795, 3634226)); //Rough Mobs revamped
@@ -205,13 +207,21 @@ public class Home extends contentpanel {
             modInfos.add(new CurseFileInfo(309110, 2655843)); //Bigger Packet Please
 
 
+            long sizeSimplePart = 237132;
+            final List<ExternalFile> extFiles = new ArrayList<>();
+            extFiles.add(new ExternalFile("Flan/SimplePartsContent.jar", "https://odysseyus.fr/extfiles/Flan/SimplePartsContent.jar", "c0070a31d356f87d02774d1f64947e9a4d4e60a6", 237132));
+            extFiles.add(new ExternalFile("Flan/WW2ContentPack.jar", "https://odysseyus.fr/extfiles/Flan/WW2ContentPack.jar", "aa138ecc99bd1d232def1c02b4908448a755e4bd", 5636950));
+            extFiles.add(new ExternalFile("options.txt", "https://odysseyus.fr/extfiles/options.txt", "e9f12341645a9ec6d1b5cba5069e00873aebeeb3", 3830));
+            extFiles.add(new ExternalFile("servers.dat", "https://odysseyus.fr/extfiles/servers.dat", "95006c35757b4033c0f13b16fc5b0ff4a2038f93", 8138));
+
+
 
 
 
 
             final List<Mod> mods = new ArrayList<>();
-        //   mods.add(new Mod("hwyla.jar", "7280d5c0dab42436549bcefc63ff64a1049e5501", 453778, "https://odysseyus.fr/mods/hwyla.jar"));
-          //  mods.add(new Mod("wawla.jar", "783157c607149875de1e045d72382d370256257c", 94115, "https://odysseyus.fr/mods/wawla.jar"));
+         mods.add(new Mod("hwyla.jar", "7280d5c0dab42436549bcefc63ff64a1049e5501", 453778, "https://odysseyus.fr/mods/hwyla.jar"));
+        // mods.add(new Mod("wawla.jar", "783157c607149875de1e045d72382d370256257c", 94115, "https://odysseyus.fr/mods/wawla.jar"));
             mods.addAll(addons.modAddons);
             modInfos.addAll(addons.curseModAddons);
 
@@ -229,7 +239,7 @@ public class Home extends contentpanel {
                     .build();
 
             final FlowUpdater updater = new FlowUpdater.FlowUpdaterBuilder()
-                    .withExternalFiles(ExternalFile.getExternalFilesFromJson("https://odysseyus.fr/extfiles.json"))
+                    .withExternalFiles(extFiles)
                     .withVanillaVersion(version)
                     .withLogger(Launcher.getInstance().getLogger())
                     .withProgressCallback(callback)
@@ -261,7 +271,7 @@ public class Home extends contentpanel {
             profile.getArgs().addAll(Arrays.asList("--server=45.90.163.68", "--port=25565"));
             ExternalLauncher launcher = new ExternalLauncher(profile);
 
-          // Platform.runLater(() -> panelManager.getStage().hide());
+          Platform.runLater(() -> panelManager.getStage().hide());
 
             Process p = launcher.launch();
 

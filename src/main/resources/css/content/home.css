@@ -33,7 +33,7 @@
 }
 
 .download-progress > .track {
-    -fx-background-color: 9D928B;
+    -fx-background-color: #9D928B;
     -fx-background-insets: 0;
     -fx-background-radius: 30px;
 }
