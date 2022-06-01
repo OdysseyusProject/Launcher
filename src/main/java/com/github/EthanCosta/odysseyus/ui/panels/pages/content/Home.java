@@ -71,6 +71,7 @@ public class Home extends contentpanel {
     public void init(PanelManager panelManager) {
         super.init(panelManager);
 
+
         RowConstraints rowConstraints = new RowConstraints();
         rowConstraints.setValignment(VPos.CENTER);
         rowConstraints.setMinHeight(75);
@@ -107,6 +108,7 @@ public class Home extends contentpanel {
         Button playBtn = new Button("Jouer");
         FontAwesomeIconView playIcon = new FontAwesomeIconView(FontAwesomeIcon.GAMEPAD);
         setCanTakeAllSize(playBtn);
+        playIcon.setSize("20px");
         setCenterH(playBtn);
         setCenterV(playBtn);
         playBtn.setMaxWidth(150);
@@ -142,7 +144,6 @@ public class Home extends contentpanel {
             }
 
 
-            //@Override TRUC DE MERDE QUI FAIT TOUS BUG
             public void update(DownloadList.DownloadInfo info) {
                 double progress = info.getDownloadedBytes() / info.getTotalToDownloadBytes();
                 Platform.runLater(() -> {
@@ -159,7 +160,9 @@ public class Home extends contentpanel {
                     fileLabel.setText("..." + p.replace(Launcher.getInstance().getLauncherDir().toFile().getAbsolutePath(), ""));
                 });
             }
+
         };
+
 
         try {
 
@@ -168,12 +171,16 @@ public class Home extends contentpanel {
                     .withName(MinecraftInfos.GAME_VERSION)
                     .build();
 
-
             final  List<CurseFileInfo> modInfos = new ArrayList<>();
             modInfos.add(new CurseFileInfo(340583, 3003242)); //Bettercaves
             modInfos.add(new CurseFileInfo(389665, 3194993)); //BetterMineshaft
-            modInfos.add(new CurseFileInfo(220318, 2595022)); //Biome O plenty
+
+            modInfos.add(new CurseFileInfo(220318, 3558882)); //Biome O plenty
+
+           // modInfos.add(new CurseFileInfo(226321, 2537917)); //BloodMoon
             modInfos.add(new CurseFileInfo(226321, 2537917)); //BloodMoon
+
+
             modInfos.add(new CurseFileInfo(237749, 2902920)); //CoroUtil
             modInfos.add(new CurseFileInfo(267602, 2915363)); //CTM
             modInfos.add(new CurseFileInfo(229449, 2874756)); //EpicSiegeMod
@@ -186,8 +193,8 @@ public class Home extends contentpanel {
             modInfos.add(new CurseFileInfo(243788, 3157722)); //ModernWarfare 4.6.2
             //modInfos.add(new CurseFileInfo(243788, 2934384)); //ModernWarfare 4.4.6
 
-            modInfos.add(new CurseFileInfo(79616, 3347832)); //Decocraft
-            modInfos.add(new CurseFileInfo(291499, 3346568)); //PTRLIB
+        //    modInfos.add(new CurseFileInfo(79616, 3347832)); //Decocraft
+         //   modInfos.add(new CurseFileInfo(291499, 3346568)); //PTRLIB
             modInfos.add(new CurseFileInfo(360795, 3634226)); //Rough Mobs revamped
             modInfos.add(new CurseFileInfo(246391, 2710969)); //Though as nails
             modInfos.add(new CurseFileInfo(237754, 2663393)); //Zombie Awereness
@@ -205,14 +212,23 @@ public class Home extends contentpanel {
             modInfos.add(new CurseFileInfo(306549, 2906537)); //Tips
             modInfos.add(new CurseFileInfo(605442, 3733003)); //Odysseyus Rich Presence
             modInfos.add(new CurseFileInfo(309110, 2655843)); //Bigger Packet Please
+            modInfos.add(new CurseFileInfo(263420, 3738188)); //Xaeros Minimap
+            modInfos.add(new CurseFileInfo(305840, 2748065)); //Absent by design
+           // modInfos.add(new CurseFileInfo(348025, 3755305)); //Parasite c mort je veux pas on m'a forcé o scour
+            modInfos.add(new CurseFileInfo(532127, 3622425)); //Legendary Tooltips
+
+          //modInfos.add(new CurseFileInfo(310343, 3481536)); //WatchDog Anti-Cheat
 
 
-            long sizeSimplePart = 237132;
-            final List<ExternalFile> extFiles = new ArrayList<>();
-            extFiles.add(new ExternalFile("Flan/SimplePartsContent.jar", "https://odysseyus.fr/extfiles/Flan/SimplePartsContent.jar", "c0070a31d356f87d02774d1f64947e9a4d4e60a6", 237132));
-            extFiles.add(new ExternalFile("Flan/WW2ContentPack.jar", "https://odysseyus.fr/extfiles/Flan/WW2ContentPack.jar", "aa138ecc99bd1d232def1c02b4908448a755e4bd", 5636950));
-            extFiles.add(new ExternalFile("options.txt", "https://odysseyus.fr/extfiles/options.txt", "e9f12341645a9ec6d1b5cba5069e00873aebeeb3", 3830));
-            extFiles.add(new ExternalFile("servers.dat", "https://odysseyus.fr/extfiles/servers.dat", "95006c35757b4033c0f13b16fc5b0ff4a2038f93", 8138));
+
+
+
+
+
+
+
+            final List<ExternalFile> extFiles = new ArrayList<>(ExternalFile.getExternalFilesFromJson("https://odysseyus.fr/extfiles.json"));
+
 
 
 
@@ -220,8 +236,13 @@ public class Home extends contentpanel {
 
 
             final List<Mod> mods = new ArrayList<>();
-         mods.add(new Mod("hwyla.jar", "7280d5c0dab42436549bcefc63ff64a1049e5501", 453778, "https://odysseyus.fr/mods/hwyla.jar"));
-        // mods.add(new Mod("wawla.jar", "783157c607149875de1e045d72382d370256257c", 94115, "https://odysseyus.fr/mods/wawla.jar"));
+           // mods.add(new Mod("WatchDog-1.0.8.jar", "e17890ef3cf420757728fa05dd522b8930b367f7", 56562, "https://odysseyus.fr/mods/WatchDog-1.0.8.jar"));
+            mods.add(new Mod("PTRLib.jar", "https://odysseyus.fr/mods/PTRLib.jar", "C33DDF5660C2A1C39537BD6552B2CDD73B654E18", 169749));
+            mods.add(new Mod("parasite.jar", "https://odysseyus.fr/mods/parasite.jar", "BE7577C663272A2013B876846A3EAF561E933A0E", 9630654 ));
+
+            mods.add(new Mod("decocraft.jar", "https://odysseyus.fr/mods/decocraft.jar", "E226ED02E3181ACA765A52CEE7BAD8865D93815B", 16976718));
+            mods.add(new Mod("hwyla.jar", "https://odysseyus.fr/mods/hwyla.jar", "7280d5c0dab42436549bcefc63ff64a1049e5501", 453778));
+         //mods.add(new Mod("wawla.jar", "783157c607149875de1e045d72382d370256257c",  "https://odysseyus.fr/mods/wawla.jar", 94115));
             mods.addAll(addons.modAddons);
             modInfos.addAll(addons.curseModAddons);
 
@@ -234,14 +255,15 @@ public class Home extends contentpanel {
                     .withForgeVersion(MinecraftInfos.FORGE_VERSION)
                     .withCurseMods(modInfos)
                     .withMods(mods)
+
                     .withOptiFine(new OptiFineInfo(MinecraftInfos.OPTIFINE_VERSION, false))
                     .withFileDeleter(new ModFileDeleter(true))
                     .build();
 
             final FlowUpdater updater = new FlowUpdater.FlowUpdaterBuilder()
-                    .withExternalFiles(extFiles)
                     .withVanillaVersion(version)
                     .withLogger(Launcher.getInstance().getLogger())
+                    .withExternalFiles(extFiles)
                     .withProgressCallback(callback)
                     .withModLoaderVersion(forge)
                     .withUpdaterOptions(options)
@@ -278,7 +300,7 @@ public class Home extends contentpanel {
             Platform.runLater(() -> {
                 try {
                     p.waitFor();
-                   // Platform.exit();
+                   //Platform.exit();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

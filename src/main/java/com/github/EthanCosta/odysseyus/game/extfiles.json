@@ -1,0 +1,33 @@
+{
+  "extfiles":
+  [
+    {
+      "path": "Flan/SimplePartsContent.jar",
+      "downloadURL": "https://odysseyus.fr/extfiles/Flan/SimplePartsContent.jar",
+      "sha1": "c0070a31d356f87d02774d1f64947e9a4d4e60a6",
+      "size": 237132,
+      "update": true
+    },
+    {
+      "path": "Flan/WW2ContentPack.jar",
+      "downloadURL": "https://odysseyus.fr/extfiles/Flan/WW2ContentPack.jar",
+      "sha1": "aa138ecc99bd1d232def1c02b4908448a755e4bd",
+      "size": 5636950,
+      "update": true
+    },
+    {
+      "path": "options.txt",
+      "downloadURL": "https://odysseyus.fr/extfiles/options.txt",
+      "sha1": "60b3d82fa6e4c3ff92c7cf27c3f8340ecdc4930d",
+      "size": 4617,
+      "update": false
+    },
+    {
+      "path": "servers.dat",
+      "downloadURL": "https://odysseyus.fr/extfiles/servers.dat",
+      "sha1": "95006c35757b4033c0f13b16fc5b0ff4a2038f93",
+      "size": 8138,
+      "update": true
+    }
+  ]
+}

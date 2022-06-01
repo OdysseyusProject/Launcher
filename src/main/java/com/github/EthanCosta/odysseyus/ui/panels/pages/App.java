@@ -96,7 +96,9 @@ public class App extends Panel {
         // Navigation
         homeBtn = new Button("Accueil");
         homeBtn.getStyleClass().add("sidemenu-nav-btn");
-        homeBtn.setGraphic(new FontAwesomeIconView(FontAwesomeIcon.HOME));
+        FontAwesomeIconView homeIcon = new FontAwesomeIconView(FontAwesomeIcon.HOME);
+        homeBtn.setGraphic(homeIcon);
+        homeIcon.setSize("20px");
         setCanTakeAllSize(homeBtn);
         setTop(homeBtn);
         homeBtn.setTranslateY(90d);
@@ -104,7 +106,9 @@ public class App extends Panel {
 
         settingsBtn = new Button("Paramètres");
         settingsBtn.getStyleClass().add("sidemenu-nav-btn");
-        settingsBtn.setGraphic(new FontAwesomeIconView(FontAwesomeIcon.GEARS));
+        FontAwesomeIconView settingsIcon = new FontAwesomeIconView(FontAwesomeIcon.GEARS);
+        settingsBtn.setGraphic(settingsIcon);
+        settingsIcon.setSize("20px");
         setCanTakeAllSize(settingsBtn);
         setTop(settingsBtn);
         settingsBtn.setTranslateY(130d);
@@ -112,19 +116,23 @@ public class App extends Panel {
 
         addonsBTN = new Button("Addons");
         addonsBTN.getStyleClass().add("sidemenu-nav-btn");
-        addonsBTN.setGraphic(new FontAwesomeIconView(FontAwesomeIcon.PLUS));
+        FontAwesomeIconView addonsIcon = new FontAwesomeIconView(FontAwesomeIcon.PLUS);
+        addonsBTN.setGraphic(addonsIcon);
+        addonsIcon.setSize("20px");
         setTop(addonsBTN);
         addonsBTN.setTranslateY(170d);
         addonsBTN.setOnMouseClicked(e -> setPage(new addons(), addonsBTN));
 
         infosBTN = new Button("Infos");
         infosBTN.getStyleClass().add("sidemenu-nav-btn");
-        infosBTN.setGraphic(new FontAwesomeIconView(FontAwesomeIcon.INFO_CIRCLE));
+        FontAwesomeIconView infosIcon = new FontAwesomeIconView(FontAwesomeIcon.INFO_CIRCLE);
+        infosBTN.setGraphic(infosIcon);
+        infosIcon.setSize("20px");
         setTop(infosBTN);
         infosBTN.setTranslateY(210d);
         infosBTN.setOnMouseClicked(e -> setPage(new infos(), infosBTN));
 
-        //sidemenu.getChildren().add(infosBTN);
+     //   sidemenu.getChildren().add(infosBTN);
 
 
         sidemenu.getChildren().addAll(homeBtn, settingsBtn, addonsBTN);
@@ -169,6 +177,7 @@ public class App extends Panel {
         setCanTakeAllSize(logoutBtn);
         setCenterV(logoutBtn);
         setRight(logoutBtn);
+        logoutIcon.setSize("20px");
         logoutBtn.getStyleClass().add("logout-btn");
         logoutBtn.setGraphic(logoutIcon);
         logoutBtn.setOnMouseClicked(e -> {

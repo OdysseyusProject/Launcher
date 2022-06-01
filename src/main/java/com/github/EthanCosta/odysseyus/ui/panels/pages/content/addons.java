@@ -41,6 +41,8 @@ public class addons extends contentpanel {
     CheckBox dyna = new CheckBox("Dynamic Surrounding");
     CheckBox controllable = new CheckBox("controllable");
     CheckBox wawla = new CheckBox("What Are we looking for");
+    CheckBox betterFPS = new CheckBox("Better FPS");
+
 
 
 
@@ -108,7 +110,7 @@ public class addons extends contentpanel {
         replaymod.selectedProperty().addListener((e, old, newValue) -> {
             if (newValue) {
 
-                modAddons.add(new Mod("Replaymod.jar", "984489e9ec23c1b4e6c4ff5a00b35eef1be8dde8", 13504148, "https://odysseyus.fr/mods/replaymod.jar"));
+                modAddons.add(new Mod("Replaymod.jar", "984489e9ec23c1b4e6c4ff5a00b35eef1be8dde8", "https://odysseyus.fr/mods/replaymod.jar", 13504148));
                 System.out.println("ReplayMod");
                 saver.set("replay", "true");
                 saver.save();
@@ -116,7 +118,7 @@ public class addons extends contentpanel {
 
             } else {
 
-                modAddons.remove(new Mod("Replaymod.jar", "984489e9ec23c1b4e6c4ff5a00b35eef1be8dde8", 13504148, "https://odysseyus.fr/mods/replaymod.jar"));
+                modAddons.remove(new Mod("Replaymod.jar", "984489e9ec23c1b4e6c4ff5a00b35eef1be8dde8", "https://odysseyus.fr/mods/replaymod.jar", 13504148));
                 System.out.println("ReplayMod remove");
                 saver.remove("replay");
                 saver.save();
@@ -205,14 +207,14 @@ public class addons extends contentpanel {
         wawla.selectedProperty().addListener((e, old, newValue) -> {
             if (newValue) {
 
-                modAddons.add(new Mod("wawla.jar", "783157c607149875de1e045d72382d370256257c", 94115, "https://odysseyus.fr/mods/wawla.jar"));
+                modAddons.add(new Mod("wawla.jar", "783157c607149875de1e045d72382d370256257c", "https://odysseyus.fr/mods/wawla.jar", 94115));
 
                 System.out.println("controllable");
                 saver.set("wawla", "true");
                 saver.save();
 
             } else {
-                modAddons.remove(new Mod("wawla.jar", "783157c607149875de1e045d72382d370256257c", 94115, "https://odysseyus.fr/mods/wawla.jar"));
+                modAddons.remove(new Mod("wawla.jar", "783157c607149875de1e045d72382d370256257c", "https://odysseyus.fr/mods/wawla.jar", 94115));
                 System.out.println("wawla remove");
                 saver.remove("wawla");
                 saver.save();
@@ -222,6 +224,36 @@ public class addons extends contentpanel {
         });
         contentPane.getChildren().add(wawla);
         wawla.setSelected(Boolean.valueOf(saver.get("wawla", "false")));
+
+
+        betterFPS.getStyleClass().add("addons-mods");
+        setLeft(betterFPS);
+        setTop(betterFPS);
+        betterFPS.setTranslateX(10d);
+        betterFPS.setIndeterminate(false);
+        betterFPS.setTranslateY(180d);
+        setCanTakeAllSize(betterFPS);
+        betterFPS.setFont(Font.font("Verdana", FontPosture.REGULAR, 13f));
+        betterFPS.selectedProperty().addListener((e, old, newValue) -> {
+            if (newValue) {
+
+                curseModAddons.add(new CurseFileInfo(229876, 2483393)); //controllable
+
+                System.out.println("betterFPS");
+                saver.set("betterFPS", "true");
+                saver.save();
+
+            } else {
+                curseModAddons.remove(new CurseFileInfo(229876, 2483393)); //controllable
+                System.out.println("betterFPS remove");
+                saver.remove("betterFPS");
+                saver.save();
+
+            }
+
+        });
+        contentPane.getChildren().add(betterFPS);
+        betterFPS.setSelected(Boolean.valueOf(saver.get("betterFPS", "false")));
 
 
 

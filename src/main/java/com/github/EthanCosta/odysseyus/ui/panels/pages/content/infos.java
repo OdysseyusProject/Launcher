@@ -76,7 +76,7 @@ public class infos extends contentpanel {
 
         // Titre
         Label title = new Label("Infos");
-        title.setFont(Font.font("Consolas", FontWeight.BOLD, FontPosture.REGULAR, 30f));
+        title.setFont(Font.font("Impact", FontWeight.BOLD, FontPosture.REGULAR, 30f));
         title.getStyleClass().add("infos-title");
         setLeft(title);
         setCanTakeAllSize(title);
@@ -87,7 +87,7 @@ public class infos extends contentpanel {
         contentPane.getChildren().add(title);
 
         Label infosServeur = new Label("Odysseyus");
-        infosServeur.setFont(Font.font("Consolas", FontWeight.SEMI_BOLD, FontPosture.REGULAR, 25f));
+        infosServeur.setFont(Font.font("Helvetica", FontWeight.SEMI_BOLD, FontPosture.REGULAR, 25f));
         infosServeur.getStyleClass().add("infos-title");
         setLeft(infosServeur);
         setTop(infosServeur);
