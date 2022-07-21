@@ -217,7 +217,13 @@ public class Home extends contentpanel {
            // modInfos.add(new CurseFileInfo(348025, 3755305)); //Parasite c mort je veux pas on m'a forcé o scour
             modInfos.add(new CurseFileInfo(532127, 3622425)); //Legendary Tooltips
 
-          //modInfos.add(new CurseFileInfo(310343, 3481536)); //WatchDog Anti-Cheat
+            modInfos.add(new CurseFileInfo(268560, 2835175)); //Mekanism
+            modInfos.add(new CurseFileInfo(277736, 3437738)); //Immersive Railroading
+            modInfos.add(new CurseFileInfo(282613, 2825260)); //track api
+            modInfos.add(new CurseFileInfo(532127, 3654955)); //Univeral mod core
+
+
+            //modInfos.add(new CurseFileInfo(310343, 3481536)); //WatchDog Anti-Cheat
 
 
 
