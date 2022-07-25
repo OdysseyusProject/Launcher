@@ -2,9 +2,10 @@
 package com.github.EthanCosta.odysseyus.ui.panels.pages.content;
 
 
-import com.azuriom.azauth.AuthenticationException;
-import com.azuriom.azauth.AzAuthenticator;
+import com.azuriom.azauth.AuthClient;
+import com.azuriom.azauth.exception.AuthException;
 import com.github.EthanCosta.odysseyus.ui.PanelManager;
+import fr.litarvan.openauth.AuthenticationException;
 import fr.theshark34.openlauncherlib.minecraft.AuthInfos;
 import fr.theshark34.openlauncherlib.minecraft.util.GameDirGenerator;
 import fr.theshark34.openlauncherlib.util.Saver;
@@ -58,7 +59,7 @@ public class infos extends contentpanel {
 
         try {
             MinecraftServerPingInfos data = new MinecraftServerPing().getPing(new MinecraftServerPingOptions().setHostname("play.odysseyus.fr").setPort(25565));
-            AzAuthenticator authenticator = new AzAuthenticator("https://odysseyus.fr");
+            AuthClient authenticator = new AuthClient("https://odysseyus.fr");
 
             AuthInfos response = authenticator.verify(saver.get("accessToken"), AuthInfos.class);
 
@@ -115,7 +116,7 @@ public class infos extends contentpanel {
 
 
 
-        } catch (IOException | AuthenticationException e) {
+        } catch (IOException | AuthException e) {
             e.printStackTrace();
         }
 

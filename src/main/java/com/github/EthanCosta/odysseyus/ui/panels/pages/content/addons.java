@@ -307,7 +307,6 @@ public class addons extends contentpanel {
         });
         contentPane.getChildren().add(tutosbtn);
 
-//Moi je suis un BG
 
 
     }

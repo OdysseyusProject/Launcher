@@ -7,7 +7,7 @@ plugins {
 
 
 group 'com.github.EthanCosta'
-version '3.1.9'
+version '3.2.0'
 
 repositories {
     mavenCentral()
@@ -39,15 +39,15 @@ dependencies {
 
     implementation 'de.jensd:fontawesomefx:8.9'
 
-    implementation 'fr.flowarg:flowupdater:1.7.0'
-    implementation 'fr.flowarg:openlauncherlib:3.2.3'
+    implementation 'fr.flowarg:flowupdater:1.7.+'
+    implementation 'fr.flowarg:openlauncherlib:3.2.5'
 
 
 
     implementation group: 'com.github.goxr3plus', name: 'FX-BorderlessScene', version: '4.4.0'
 
     implementation 'com.github.oshi:oshi-core:5.8.6'
-    implementation 'com.azuriom:azauth:0.1.0-SNAPSHOT'
+    implementation 'com.azuriom:azauth:1.0-SNAPSHOT'
 
     implementation 're.alwyn974.minecraftserverping:MinecraftServerPing:2.0.0'
 

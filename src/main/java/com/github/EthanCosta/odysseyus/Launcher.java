@@ -1,6 +1,7 @@
 package com.github.EthanCosta.odysseyus;
 
-import com.azuriom.azauth.AzAuthenticator;
+import com.azuriom.azauth.AuthClient;
+import com.azuriom.azauth.exception.AuthException;
 import com.github.EthanCosta.odysseyus.ui.PanelManager;
 import com.github.EthanCosta.odysseyus.ui.panels.pages.App;
 import com.github.EthanCosta.odysseyus.ui.panels.pages.login;
@@ -16,10 +17,9 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.UUID;
 
 public class Launcher extends Application {
-private PanelManager panelManager;
+    private PanelManager panelManager;
     private static Launcher instance;
     private final ILogger logger;
     public final Path launcherDir = GameDirGenerator.createGameDir("Odysseyus", true);
@@ -59,15 +59,18 @@ private PanelManager panelManager;
     }
 
     public boolean isUserAlreadyLoggedIn() {
+
+
         if (saver.get("accessToken") != null ) {
 
-            AzAuthenticator authenticator = new AzAuthenticator("https://odysseyus.fr");
+            AuthClient authenticator = new AuthClient("https://odysseyus.fr");
 
 
 
             try {
 
                 AuthInfos response = authenticator.verify(saver.get("accessToken"), AuthInfos.class);
+
 
                 this.setAuthInfos(new AuthInfos(
                         response.getUsername(),
@@ -79,7 +82,7 @@ private PanelManager panelManager;
 
 
                 return true;
-            } catch (IOException | com.azuriom.azauth.AuthenticationException ignored) {
+            } catch (AuthException ignored) {
                 saver.remove("accessToken");
                 saver.remove("clientToken");
                 saver.save();
@@ -108,7 +111,7 @@ private PanelManager panelManager;
     }
 
     public Saver getSaver() {
-    return saver;
+        return saver;
 
     }
 

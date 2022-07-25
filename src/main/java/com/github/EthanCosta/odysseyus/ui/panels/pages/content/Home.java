@@ -179,8 +179,6 @@ public class Home extends contentpanel {
 
            // modInfos.add(new CurseFileInfo(226321, 2537917)); //BloodMoon
             modInfos.add(new CurseFileInfo(226321, 2537917)); //BloodMoon
-
-
             modInfos.add(new CurseFileInfo(237749, 2902920)); //CoroUtil
             modInfos.add(new CurseFileInfo(267602, 2915363)); //CTM
             modInfos.add(new CurseFileInfo(229449, 2874756)); //EpicSiegeMod
@@ -191,10 +189,6 @@ public class Home extends contentpanel {
             modInfos.add(new CurseFileInfo(407884, 3355108)); //Modular Voice Chat
             modInfos.add(new CurseFileInfo(238222, 3043174)); //JEI
             modInfos.add(new CurseFileInfo(243788, 3157722)); //ModernWarfare 4.6.2
-            //modInfos.add(new CurseFileInfo(243788, 2934384)); //ModernWarfare 4.4.6
-
-        //    modInfos.add(new CurseFileInfo(79616, 3347832)); //Decocraft
-         //   modInfos.add(new CurseFileInfo(291499, 3346568)); //PTRLIB
             modInfos.add(new CurseFileInfo(360795, 3634226)); //Rough Mobs revamped
             modInfos.add(new CurseFileInfo(246391, 2710969)); //Though as nails
             modInfos.add(new CurseFileInfo(237754, 2663393)); //Zombie Awereness
@@ -214,13 +208,17 @@ public class Home extends contentpanel {
             modInfos.add(new CurseFileInfo(309110, 2655843)); //Bigger Packet Please
             modInfos.add(new CurseFileInfo(263420, 3738188)); //Xaeros Minimap
             modInfos.add(new CurseFileInfo(305840, 2748065)); //Absent by design
-           // modInfos.add(new CurseFileInfo(348025, 3755305)); //Parasite c mort je veux pas on m'a forcé o scour
             modInfos.add(new CurseFileInfo(532127, 3622425)); //Legendary Tooltips
 
             modInfos.add(new CurseFileInfo(268560, 2835175)); //Mekanism
             modInfos.add(new CurseFileInfo(277736, 3437738)); //Immersive Railroading
             modInfos.add(new CurseFileInfo(282613, 2825260)); //track api
-            modInfos.add(new CurseFileInfo(532127, 3654955)); //Univeral mod core
+            modInfos.add(new CurseFileInfo(371784, 3654955)); //Univeral mod core
+            modInfos.add(new CurseFileInfo(229769, 3109315)); //Stream
+            modInfos.add(new CurseFileInfo(229708, 3093852)); //FarseekAPI
+            modInfos.add(new CurseFileInfo(354143, 3511568)); //Performant
+
+
 
 
             //modInfos.add(new CurseFileInfo(310343, 3481536)); //WatchDog Anti-Cheat

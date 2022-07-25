@@ -1,12 +1,14 @@
 package com.github.EthanCosta.odysseyus.ui.panels.pages;
 
-import com.azuriom.azauth.AuthenticationException;
-import com.azuriom.azauth.AzAuthenticator;
+import com.azuriom.azauth.AuthClient;
 
+import com.azuriom.azauth.exception.AuthException;
 import com.github.EthanCosta.odysseyus.Launcher;
 import com.github.EthanCosta.odysseyus.ui.PanelManager;
 import com.github.EthanCosta.odysseyus.ui.panel.Panel;
 
+import fr.theshark34.openlauncherlib.minecraft.AuthInfos;
+import fr.litarvan.openauth.AuthenticationException;
 import fr.theshark34.openlauncherlib.minecraft.AuthInfos;
 import fr.theshark34.openlauncherlib.util.Saver;
 
@@ -41,7 +43,7 @@ public class login extends Panel {
     Label userErrorLabel = new Label();
     Label passwordErrorLabel = new Label();
     Button btnLogin = new Button("Connexion");
-   // CheckBox authModeChk = new CheckBox("Mode crack");
+    // CheckBox authModeChk = new CheckBox("Mode crack");
 
 
 
@@ -148,7 +150,7 @@ public class login extends Panel {
         btnLogin.setOnMouseClicked(e -> {
             try {
                 this.authenticate(userField.getText(), passwordField.getText());
-            } catch (AuthenticationException ex) {
+            } catch (AuthenticationException | AuthException ex) {
                 ex.printStackTrace();
             }
         });
@@ -167,9 +169,9 @@ public class login extends Panel {
                 Desktop.getDesktop().browse(new URI("https://odysseyus.fr/user/register"));
             }   catch (IOException | URISyntaxException ex) {
 
-            ex.printStackTrace();
-        }
-    });
+                ex.printStackTrace();
+            }
+        });
 
         //Explications
         Label inscritText1 = new Label("Pas encore inscrit ?");
@@ -243,7 +245,7 @@ public class login extends Panel {
 
     public void updateLoginBtnState(TextField textField, Label errorLabel) {
         if (textField.getText().length() == 0) {
-            errorLabel.setText("Le champ ne peut être vide :/");
+            errorLabel.setText("Le champ ne peut pas etre vide :/");
         } else {
             errorLabel.setText("");
         }
@@ -252,40 +254,58 @@ public class login extends Panel {
     }
 
 
-    public void authenticate(String user, String password) throws AuthenticationException {
-            AzAuthenticator authenticator = new AzAuthenticator("https://odysseyus.fr");
-
-            try {
+    public void authenticate(String user, String password) throws AuthenticationException, AuthException {
+        AuthClient authenticator = new AuthClient("https://odysseyus.fr");
 
 
+        try {
 
-                AuthInfos infos = authenticator.authenticate(user, password, AuthInfos.class);
+            AuthInfos infos = authenticator.login(user, password, () -> {
+                // Called when 2FA is enabled
+                String code = null;
+
+                while (code == null || code.isEmpty()) {
+                    TextInputDialog inputdialog = new TextInputDialog("Ecrit ton code d'A2F");
+
+                    inputdialog.setContentText("A2F: ");
+                    inputdialog.setHeaderText("A2F requis");
+                    inputdialog.show();
+                    code = inputdialog.getEditor().getText();
 
 
-                saver.set("accessToken", infos.getAccessToken());
-                saver.set("Username", infos.getUsername());
-                saver.set("UUID", infos.getUuid());
-                    saver.save();
+                }
 
-                Launcher.getInstance().setAuthInfos(infos);
-
-                this.logger.info("Hello " + infos.getUsername());
-
-                panelManager.showPanel(new App());
+                return code;
+            }, AuthInfos.class);
 
 
-            } catch (AuthenticationException | IOException e) {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Erreur");
-                alert.setHeaderText("Une erreur est survenu lors de la connexion");
-                alert.setContentText(e.getMessage());
-                alert.show();
-            }
+            saver.set("accessToken", infos.getAccessToken());
+            saver.set("Username", infos.getUsername());
+            saver.set("UUID", infos.getUuid());
+            saver.save();
+
+            Launcher.getInstance().setAuthInfos(infos);
+
+            this.logger.info("Hello " + infos.getUsername());
+
+            panelManager.showPanel(new App());
+
+
+            //inputdialog.getEditor().getText()
+
+        } catch(AuthException e) {
+
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText("Une erreur est survenu lors de la connexion");
+            alert.setContentText(e.getMessage());
+            alert.show();
+
         }
+    }
 
 
     public TextField getUserField() {
         return userField;
     }
 }
-
