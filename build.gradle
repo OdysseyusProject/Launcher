@@ -1,13 +1,13 @@
 plugins {
     id 'idea'
     id 'com.github.johnrengelman.shadow' version '7.0.0'
-    id 'java'
+    id 'java-library'
     id 'application'
 }
 
 
 group 'com.github.EthanCosta'
-version '3.2.0'
+version '3.2.1'
 
 repositories {
     mavenCentral()
@@ -59,7 +59,7 @@ dependencies {
 
 
 application {
-    getMainClass().set('com.github.EthanCosta.odysseyus.main')
+    getMainClass().set('com.github.EthanCosta.odysseyus.Main')
 }
 
 
@@ -68,4 +68,4 @@ compileJava {
     options.encoding = "UTF-8"
 }
 
-jar { manifest.attributes.put('Main_Class', 'com.github.EthanCosta.odysseyus.main') }
+jar { manifest.attributes.put('Main_Class', 'com.github.EthanCosta.odysseyus.Main') }

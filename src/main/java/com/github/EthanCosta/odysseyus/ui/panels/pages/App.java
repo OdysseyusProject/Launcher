@@ -28,7 +28,7 @@ public class App extends Panel {
     GridPane navContent = new GridPane();
 
     Node activeLink = null;
-    contentpanel currentPage = null;
+    ContentPanel currentPage = null;
 
     Button homeBtn, settingsBtn, addonsBTN, infosBTN;
 
@@ -112,7 +112,7 @@ public class App extends Panel {
         setCanTakeAllSize(settingsBtn);
         setTop(settingsBtn);
         settingsBtn.setTranslateY(130d);
-        settingsBtn.setOnMouseClicked(e -> setPage(new settings(), settingsBtn));
+        settingsBtn.setOnMouseClicked(e -> setPage(new Settings(), settingsBtn));
 
         addonsBTN = new Button("Addons");
         addonsBTN.getStyleClass().add("sidemenu-nav-btn");
@@ -121,7 +121,7 @@ public class App extends Panel {
         addonsIcon.setSize("20px");
         setTop(addonsBTN);
         addonsBTN.setTranslateY(170d);
-        addonsBTN.setOnMouseClicked(e -> setPage(new addons(), addonsBTN));
+        addonsBTN.setOnMouseClicked(e -> setPage(new Addons(), addonsBTN));
 
         infosBTN = new Button("Infos");
         infosBTN.getStyleClass().add("sidemenu-nav-btn");
@@ -130,7 +130,7 @@ public class App extends Panel {
         infosIcon.setSize("20px");
         setTop(infosBTN);
         infosBTN.setTranslateY(210d);
-        infosBTN.setOnMouseClicked(e -> setPage(new infos(), infosBTN));
+        infosBTN.setOnMouseClicked(e -> setPage(new Infos(), infosBTN));
 
      //   sidemenu.getChildren().add(infosBTN);
 
@@ -191,7 +191,7 @@ public class App extends Panel {
             saver.remove("offline-username");
             saver.save();
             Launcher.getInstance().setAuthInfos(null);
-            this.panelManager.showPanel(new login());
+            this.panelManager.showPanel(new Login());
         });
         userPane.getChildren().add(logoutBtn);
 
@@ -209,7 +209,7 @@ public class App extends Panel {
         setPage(new Home(), homeBtn);
     }
 
-    public void setPage(contentpanel panel, Node navButton) {
+    public void setPage(ContentPanel panel, Node navButton) {
         if (currentPage instanceof Home && ((Home) currentPage).isDownloading() ) {
             return;
         }

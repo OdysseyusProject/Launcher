@@ -1,12 +1,10 @@
 package com.github.EthanCosta.odysseyus.ui.panels.pages.content;
 
-import com.github.EthanCosta.odysseyus.Launcher;
 import com.github.EthanCosta.odysseyus.ui.PanelManager;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import fr.flowarg.flowupdater.download.json.CurseFileInfo;
 
-import fr.flowarg.flowupdater.download.json.ExternalFile;
 import fr.flowarg.flowupdater.download.json.Mod;
 import fr.theshark34.openlauncherlib.minecraft.util.GameDirGenerator;
 import fr.theshark34.openlauncherlib.util.Saver;
@@ -21,7 +19,6 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.TextAlignment;
 
 import java.awt.*;
-import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -30,7 +27,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-public class addons extends contentpanel {
+public class Addons extends ContentPanel {
     //private final Saver saver = Launcher.getInstance().getSaver()
     public final Path launcherDir = GameDirGenerator.createGameDir("Odysseyus", true);
     GridPane contentPane = new GridPane();

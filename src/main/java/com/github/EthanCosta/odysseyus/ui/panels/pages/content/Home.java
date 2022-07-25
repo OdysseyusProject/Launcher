@@ -5,7 +5,6 @@ import com.github.EthanCosta.odysseyus.game.MinecraftInfos;
 import com.github.EthanCosta.odysseyus.ui.PanelManager;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
-import fr.flowarg.flowstringer.StringUtils;
 import fr.flowarg.flowupdater.FlowUpdater;
 import fr.flowarg.flowupdater.download.DownloadList;
 import fr.flowarg.flowupdater.download.IProgressCallback;
@@ -20,7 +19,6 @@ import fr.flowarg.flowupdater.utils.UpdaterOptions;
 import fr.flowarg.flowupdater.versions.AbstractForgeVersion;
 import fr.flowarg.flowupdater.versions.ForgeVersionBuilder;
 import fr.flowarg.flowupdater.versions.VanillaVersion;
-import fr.flowarg.openlauncherlib.NoFramework;
 
 import fr.theshark34.openlauncherlib.external.ExternalLaunchProfile;
 import fr.theshark34.openlauncherlib.external.ExternalLauncher;
@@ -35,16 +33,13 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 
-import java.io.File;
-import java.net.URL;
 import java.nio.file.Path;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
-public class Home extends contentpanel {
+public class Home extends ContentPanel {
 
 
     private final Saver saver = Launcher.getInstance().getSaver();
@@ -210,13 +205,17 @@ public class Home extends contentpanel {
             modInfos.add(new CurseFileInfo(305840, 2748065)); //Absent by design
             modInfos.add(new CurseFileInfo(532127, 3622425)); //Legendary Tooltips
 
-            modInfos.add(new CurseFileInfo(268560, 2835175)); //Mekanism
+            //modInfos.add(new CurseFileInfo(268560, 2835175)); //Mekanism
             modInfos.add(new CurseFileInfo(277736, 3437738)); //Immersive Railroading
             modInfos.add(new CurseFileInfo(282613, 2825260)); //track api
             modInfos.add(new CurseFileInfo(371784, 3654955)); //Univeral mod core
             modInfos.add(new CurseFileInfo(229769, 3109315)); //Stream
             modInfos.add(new CurseFileInfo(229708, 3093852)); //FarseekAPI
             modInfos.add(new CurseFileInfo(354143, 3511568)); //Performant
+
+            modInfos.add(new CurseFileInfo(229073, 2960397)); //Hats
+            modInfos.add(new CurseFileInfo(229060, 2801262)); //ichunutil
+
 
 
 
@@ -247,8 +246,8 @@ public class Home extends contentpanel {
             mods.add(new Mod("decocraft.jar", "https://odysseyus.fr/mods/decocraft.jar", "E226ED02E3181ACA765A52CEE7BAD8865D93815B", 16976718));
             mods.add(new Mod("hwyla.jar", "https://odysseyus.fr/mods/hwyla.jar", "7280d5c0dab42436549bcefc63ff64a1049e5501", 453778));
          //mods.add(new Mod("wawla.jar", "783157c607149875de1e045d72382d370256257c",  "https://odysseyus.fr/mods/wawla.jar", 94115));
-            mods.addAll(addons.modAddons);
-            modInfos.addAll(addons.curseModAddons);
+            mods.addAll(Addons.modAddons);
+            modInfos.addAll(Addons.curseModAddons);
 
 
             final UpdaterOptions options = new UpdaterOptions.UpdaterOptionsBuilder()
@@ -274,7 +273,7 @@ public class Home extends contentpanel {
                     .build();
 
             updater.update(Launcher.getInstance().getLauncherDir());
-            this.startGame(MinecraftInfos.FORGE_VERSION);
+            this.startGame(MinecraftInfos.GAME_VERSION);
 
 
         } catch (Exception exception) {
@@ -287,7 +286,7 @@ public class Home extends contentpanel {
         GameInfos infos = new GameInfos(
                 MinecraftInfos.SERVER_NAME,
                 true,
-                new GameVersion(gameVersion, MinecraftInfos.OLL_GAME_TYPE.setNFVD(MinecraftInfos.OLL_FORGE_DISCRIMINATOR)),
+                new GameVersion(gameVersion, MinecraftInfos.OLL_GAME_TYPE),
                 new GameTweak[]{GameTweak.FORGE}
         );
 
@@ -300,15 +299,8 @@ public class Home extends contentpanel {
           Platform.runLater(() -> panelManager.getStage().hide());
 
             Process p = launcher.launch();
-
-            Platform.runLater(() -> {
-                try {
-                    p.waitFor();
-                   //Platform.exit();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            });
+            p.waitFor();
+            Platform.runLater(Platform::exit);
         } catch (Exception exception) {
             exception.printStackTrace();
             Launcher.getInstance().getLogger().err(exception.toString());

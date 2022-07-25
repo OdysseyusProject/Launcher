@@ -4,7 +4,7 @@ import com.azuriom.azauth.AuthClient;
 import com.azuriom.azauth.exception.AuthException;
 import com.github.EthanCosta.odysseyus.ui.PanelManager;
 import com.github.EthanCosta.odysseyus.ui.panels.pages.App;
-import com.github.EthanCosta.odysseyus.ui.panels.pages.login;
+import com.github.EthanCosta.odysseyus.ui.panels.pages.Login;
 import fr.flowarg.flowlogger.ILogger;
 import fr.flowarg.flowlogger.Logger;
 import fr.theshark34.openlauncherlib.minecraft.AuthInfos;
@@ -14,11 +14,11 @@ import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class Launcher extends Application {
+    
     private PanelManager panelManager;
     private static Launcher instance;
     private final ILogger logger;
@@ -45,7 +45,7 @@ public class Launcher extends Application {
         this.logger.info("Starting Launcher");
         this.panelManager = new PanelManager(this, stage);
         this.panelManager.init();
-        this.panelManager.showPanel(new login());
+        this.panelManager.showPanel(new Login());
 
         if (this.isUserAlreadyLoggedIn()) {
             logger.info("Hello " + authInfos.getUsername());
@@ -53,7 +53,7 @@ public class Launcher extends Application {
             this.panelManager.showPanel(new App());
 
         } else {
-            this.panelManager.showPanel(new login());
+            this.panelManager.showPanel(new Login());
         }
 
     }
@@ -128,4 +128,9 @@ public class Launcher extends Application {
     public void hideWindow() {
         this.panelManager.getStage().hide();
     }
+
+    public PanelManager getPanelManager() {
+        return panelManager;
+    }
+
 }

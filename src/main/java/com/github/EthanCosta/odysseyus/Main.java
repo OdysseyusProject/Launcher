@@ -1,14 +1,11 @@
 package com.github.EthanCosta.odysseyus;
 
-import com.github.EthanCosta.odysseyus.ui.panels.pages.content.Home;
-import com.github.EthanCosta.odysseyus.ui.panels.pages.content.addons;
 import javafx.application.Application;
 
 import javax.swing.*;
-import javafx.scene.control.TextField;
 
 
-public class main {
+public class Main {
 
     public static void main(String[] args) {
         try {

@@ -6,7 +6,7 @@ import javafx.scene.layout.GridPane;
 import java.io.IOException;
 
 
-public interface ipanel {
+public interface IPanel {
     void init (PanelManager panelManager);
     GridPane getLayout();
     void onShow();

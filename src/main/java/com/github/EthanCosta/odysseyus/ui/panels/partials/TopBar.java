@@ -15,7 +15,7 @@ import javafx.scene.text.FontWeight;
 
 import java.security.PrivateKey;
 
-public class topbar extends Panel {
+public class TopBar extends Panel {
      private GridPane topBar;
 
     @Override

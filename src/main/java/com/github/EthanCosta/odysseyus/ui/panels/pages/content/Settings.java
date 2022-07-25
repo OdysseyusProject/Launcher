@@ -17,7 +17,7 @@ import javafx.scene.text.TextAlignment;
 import oshi.SystemInfo;
 import oshi.hardware.GlobalMemory;
 
-public class settings extends contentpanel {
+public class Settings extends ContentPanel {
     private final Saver saver = Launcher.getInstance().getSaver();
     GridPane contentPane = new GridPane();
 

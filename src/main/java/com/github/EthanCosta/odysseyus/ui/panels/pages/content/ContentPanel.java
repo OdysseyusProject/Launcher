@@ -4,7 +4,7 @@ import com.github.EthanCosta.odysseyus.ui.panel.Panel;
 import javafx.animation.FadeTransition;
 import javafx.util.Duration;
 
-public abstract class contentpanel extends Panel {
+public abstract class ContentPanel extends Panel {
 
     @Override
     public void onShow() {

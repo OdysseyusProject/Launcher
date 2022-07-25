@@ -1,8 +1,8 @@
 package com.github.EthanCosta.odysseyus.ui;
 
 import com.github.EthanCosta.odysseyus.Launcher;
-import com.github.EthanCosta.odysseyus.ui.panel.ipanel;
-import com.github.EthanCosta.odysseyus.ui.panels.partials.topbar;
+import com.github.EthanCosta.odysseyus.ui.panel.IPanel;
+import com.github.EthanCosta.odysseyus.ui.panels.partials.TopBar;
 import com.goxr3plus.fxborderlessscene.borderless.BorderlessScene;
 import fr.flowarg.flowcompat.Platform;
 import javafx.geometry.VPos;
@@ -43,7 +43,7 @@ public class PanelManager {
         } else {
             this.stage.initStyle(StageStyle.UNDECORATED);
 
-            topbar topBar = new topbar();
+            TopBar topBar = new TopBar();
             BorderlessScene scene = new BorderlessScene(this.stage, StageStyle.UNDECORATED, this.layout);
             scene.setResizable(true);
             scene.setMoveControl(topBar.getLayout());
@@ -67,7 +67,7 @@ public class PanelManager {
         this.stage.show();
     }
 
-    public void showPanel(ipanel panel) {
+    public void showPanel(IPanel panel) {
         this.contentPane.getChildren().clear();
         this.contentPane.getChildren().add(panel.getLayout());
         if (panel.getStylesheetPath() != null) {

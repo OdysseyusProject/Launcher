@@ -2,7 +2,7 @@ package com.github.EthanCosta.odysseyus.ui.panel;
 
 import javafx.scene.Node;
 
-public interface imovable {
+public interface IMovable {
     void setLeft(Node node);
     void setRight(Node node);
     void setTop(Node node);

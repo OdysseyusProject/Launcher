@@ -26,13 +26,15 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.TextAlignment;
 
+import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Optional;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-public class login extends Panel {
+public class Login extends Panel {
     GridPane loginCard = new GridPane();
 
     Saver saver = Launcher.getInstance().getSaver();
@@ -262,15 +264,23 @@ public class login extends Panel {
 
             AuthInfos infos = authenticator.login(user, password, () -> {
                 // Called when 2FA is enabled
-                String code = null;
+                 String code = null;
+
+                TextInputDialog inputdialog = new TextInputDialog("");
+                inputdialog.setContentText("A2F: ");
+                inputdialog.setHeaderText("A2F requis");
+                inputdialog.show();
+
 
                 while (code == null || code.isEmpty()) {
-                    TextInputDialog inputdialog = new TextInputDialog("Ecrit ton code d'A2F");
 
-                    inputdialog.setContentText("A2F: ");
-                    inputdialog.setHeaderText("A2F requis");
-                    inputdialog.show();
-                    code = inputdialog.getEditor().getText();
+
+
+                        code = inputdialog.getEditor().getText();
+
+
+
+
 
 
                 }
@@ -301,7 +311,7 @@ public class login extends Panel {
             alert.setContentText(e.getMessage());
             alert.show();
 
-        }
+        }    
     }
 
 

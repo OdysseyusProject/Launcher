@@ -5,7 +5,6 @@ package com.github.EthanCosta.odysseyus.ui.panels.pages.content;
 import com.azuriom.azauth.AuthClient;
 import com.azuriom.azauth.exception.AuthException;
 import com.github.EthanCosta.odysseyus.ui.PanelManager;
-import fr.litarvan.openauth.AuthenticationException;
 import fr.theshark34.openlauncherlib.minecraft.AuthInfos;
 import fr.theshark34.openlauncherlib.minecraft.util.GameDirGenerator;
 import fr.theshark34.openlauncherlib.util.Saver;
@@ -24,7 +23,7 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public class infos extends contentpanel {
+public class Infos extends ContentPanel {
 
     GridPane contentPane = new GridPane();
     public final Path launcherDir = GameDirGenerator.createGameDir("Odysseyus", true);
